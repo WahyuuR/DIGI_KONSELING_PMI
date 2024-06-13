@@ -42,7 +42,7 @@
 
 /* hero section */
 .banner {
-  background-image: url(/images/BGuptp2tk.jpg); /* Ganti dengan path gambar Anda */
+  background-image: url(/images/loket1.jpg); /* Ganti dengan path gambar Anda */
   background-size: cover; /* Agar gambar memenuhi seluruh area */
   background-repeat: no-repeat; /* Agar gambar tidak berulang */
   background-position: center; /* Agar gambar berada di tengah */
@@ -54,7 +54,7 @@
 }
 .header-text {
   height: 100svh;
-  background-image: url(/images/BGuptp2tk.jpg); /* Ganti dengan path gambar Anda */
+  background-image: url(/images/loket1.jpg); /* Ganti dengan path gambar Anda */
   background-size: cover;
   background-attachment: fixed; /* This will keep the background image fixed */
   display: flex;
