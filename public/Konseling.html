@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <style>
+      #chatbox {
+        display: flex;
+        justify-content: space-between;
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 50px;
+      }
+      .box-loket {
+        margin-top: 120px;
+      }
+      .chat-entry {
+        margin-bottom: 10px;
+        padding: 8px;
+        border-radius: 8px;
+        background-color: white;
+      }
+      .whatsapp-button {
+        text-decoration: none;
+        color: white;
+        background-color: #25D366;
+        padding: 10px 20px;
+        border-radius: 5px;
+        display: block;
+        margin-top: 10px;
+      }
+      #counselors {
+        width: 29%; /* Atur lebar kolom konselor */
+      }
+      #counselorInfo {
+        width: 70%; /* Atur lebar kolom informasi konselor */
+      }
+      .navbar {
+        background-color: #fff;
+        height: 80px;
+        margin: 0; /* Remove margin to prevent offset */
+        border-radius: 0; /* Remove border-radius for a flush look */
+        padding: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      /* navbar */
+      .navbar-toggler {
+        border: none;
+        font-size: 1.25rem;
+      }
+      .navbar-toggler:focus,
+      .btn-close:focus {
+        box-shadow: none;
+        outline: none;
+      }
+         #footer-placeholder {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        margin-top: -120px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav"></nav>
+    <div class="container box-loket">
+      <h2>Daftar Konselor</h2>
+      
+      <div id="chatbox">
+        <div id="counselors" class="d-flex flex-column">
+          <!-- Nama konselor akan diisi oleh JavaScript -->
+        </div>
+        <div id="counselorInfo" class="d-flex flex-column">
+          <!-- Informasi konselor akan diisi oleh JavaScript -->
+        </div>
+      </div>
+      <h6 class="mt-3">Silahkan untuk membuat janji konseling dengan konselor yang tersedia pada saat jam kerja.</h6>
+    </div>
+    <footer id="footer-placeholder"></footer>
+    <script src="/js/konseling.js"></script>
+    <script src="/js/loadComponent.js"></script>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+ 
+  </body>
+</html>

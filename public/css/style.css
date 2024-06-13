@@ -1,0 +1,319 @@
+* {
+  font-family: montserrat;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.body-kehadiran {
+  background-image: url(/images/BGuptp2tk.jpg); /* Ganti dengan path gambar Anda */
+  background-size: cover; /* Agar gambar memenuhi seluruh area */
+  background-repeat: no-repeat; /* Agar gambar tidak berulang */
+  background-position: center; /* Agar gambar berada di tengah */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.body-login {
+  background-image: url(/images/BGuptp2tk.jpg); /* Ganti dengan path gambar Anda */
+  background-size: cover; /* Agar gambar memenuhi seluruh area */
+  background-repeat: no-repeat; /* Agar gambar tidak berulang */
+  background-position: center; /* Agar gambar berada di tengah */
+  height: 100vh;
+}
+.navbar {
+  background-color: #fff;
+  height: 80px;
+  margin: 0; /* Remove margin to prevent offset */
+  border-radius: 0; /* Remove border-radius for a flush look */
+  padding: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+/* navbar */
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
+}
+.navbar-toggler:focus,
+.btn-close:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+/* hero section */
+.banner {
+  background-image: url(/images/BGuptp2tk.jpg); /* Ganti dengan path gambar Anda */
+  background-size: cover; /* Agar gambar memenuhi seluruh area */
+  background-repeat: no-repeat; /* Agar gambar tidak berulang */
+  background-position: center; /* Agar gambar berada di tengah */
+  height: 70svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Untuk memposisikan konten secara vertikal di tengah */
+  align-items: center;
+}
+.header-text {
+  height: 100svh;
+  background-image: url(/images/BGuptp2tk.jpg); /* Ganti dengan path gambar Anda */
+  background-size: cover;
+  background-attachment: fixed; /* This will keep the background image fixed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+.text-content h1 {
+  font-size: 80px;
+  text-transform: uppercase;
+}
+.text-content p {
+  width: 75%;
+  margin: auto;
+  line-height: 1.9;
+}
+.text-content a {
+  background: #fff;
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 30px;
+  color: #202020;
+  margin-top: 30px;
+  border-radius: 50px;
+  transition: all 0.5s ease;
+}
+.text-content a:hover {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+/* Card Fitur */
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 6% auto 0;
+}
+.single-card {
+  position: relative;
+  width: 280px;
+  height: 400px;
+  margin: 15px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  background: #414852;
+  border-radius: 15px;
+  transition: all 0.8s ease-in-out;
+}
+.single-card:hover {
+  transform: translateY(-10px);
+}
+.img-area {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+.img-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.img-area:hover img {
+  transform: scale(1.1);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.single-card:hover .overlay {
+  opacity: 1;
+}
+.overlay a {
+  background: transparent;
+  color: #333;
+  padding: 100%;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 10px;
+  border: none;
+}
+.info {
+  padding: 10px;
+  text-align: center;
+  color: #ddd;
+}
+.info h3 {
+  margin: 15px 0 10px;
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Bebas Neue", sans-serif;
+}
+.info .price {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  color: aqua;
+}
+
+/* Halaman KEhadiran */
+.footer-kehadiran {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.footer-login {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.card {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.crop-img img {
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.form-Kehadiran {
+  position: absolute;
+  width: 450px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* Transparansi setengah */
+  color: #000000;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Shadow */
+  display: flex;
+  justify-content: center;
+}
+.drop-down-list {
+  color: #000000;
+}
+
+/* Halaman Login */
+.label {
+  color: black;
+}
+.form-login-container {
+  position: relative;
+  width: 450px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* Transparansi setengah */
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #202020;
+}
+.container-login-btn {
+  display: flex;
+  justify-content: center;
+}
+.form-group {
+  color: #000000;
+  margin-bottom: 30px; /* Add spacing between form groups */
+}
+
+.form-control-tabung {
+  border-radius: 20px;
+}
+
+.btn-login {
+  border: #000000;
+  background-color: #000000;
+}
+.login-btn {
+  background: #a9fdb1;
+  text-decoration: none;
+  padding: 10px 30px;
+  color: #202020;
+  margin-top: 30px;
+  border-radius: 50px;
+  transition: 0.5s ease;
+  border: none;
+}
+
+.login-btn:hover {
+  border: 1px solid #fff;
+  color: #ffffff;
+  background-color: #007bff;
+}
+/*  */
+
+@media (max-width: 768px) {
+  .header-text {
+    text-align: center;
+    padding: 10px;
+    background-attachment: scroll; /* Disabling fixed background for mobile for better performance */
+  }
+
+  .header-text .text-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .header-text .text-content h1 {
+    font-size: 2rem;
+  }
+
+  .header-text .text-content p {
+    font-size: 1rem;
+  }
+
+  .header-text .text-content a {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .form-login-container {
+    position: absolute;
+    width: 70%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Transparansi setengah */
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Shadow */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #202020;
+  }
+  .footer {
+    height: 100px;
+  }
+}

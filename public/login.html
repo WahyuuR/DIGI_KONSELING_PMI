@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SIDIG-PMI</title>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+  </head>
+  <body class="body-login">
+    <!-- nav -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/index.html">Logo</a>
+        <button
+          class="navbar-toggler navbar-toggler-start"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="/index.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login.html">Login</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- login -->
+    <div class="form-login-container">
+      <h3 class="text-center mb-4">Login</h3>
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="label" for="username">Username</label>
+          <input
+            type="text"
+            class="form-control form-control-tabung"
+            id="username"
+            name="username"
+            placeholder="Enter username"
+          />
+        </div>
+        <div class="form-group">
+          <label class="label" for="password">Password</label>
+          <input
+            type="password"
+            class="form-control form-control-tabung"
+            id="password"
+            name="password"
+            placeholder="Enter password"
+          />
+        </div>
+        <div class="container-login-btn">
+          <button class="login-btn" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+    <!-- footer -->
+    <footer class="footer footer-login bg-dark pt-2 pb-4 mt-5">
+      <div class="container text-light text-center">
+        <p class="display-5 mb-3">SIDIG-PMI</p>
+        <small class="text-white-50"
+          >&copy;Copyright by Unitomo. All rights reserved.</small>
+      </div>
+    </footer>
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Ambil nilai username dan password dari form
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+
+          // Validasi username dan password (ini hanya contoh, sesuaikan dengan kebutuhan Anda)
+          const validUsername = "admin";
+          const validPassword = "admin";
+
+          if (username === validUsername && password === validPassword) {
+            // Jika login berhasil, arahkan ke halaman lain
+            window.location.href = "/admin.html";
+          } else {
+            // Jika login gagal, tampilkan pesan error
+            alert("Username atau password salah!");
+          }
+        });
+    </script>
+  </body>
+</html>

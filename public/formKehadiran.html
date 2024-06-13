@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SIDIG-PMI</title>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+  </head>
+  <body class="body-kehadiran">
+    <!-- nav -->
+    <nav id="nav"></nav>
+    <!-- Form Kehadiran Tamu -->
+    <div class="form-Kehadiran container row justify-content-center">
+      <div class="card-header">
+        <h3 class="text-center mb-4">Daftar Hadir Tamu</h3>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="mb-3">
+            <label for="nama" class="form-label label">Nama</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nama"
+              placeholder="Masukkan nama Anda"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label label">No.Telpon</label>
+            <input
+              type="text"
+              class="form-control"
+              id="No_Telpon"
+              placeholder="Masukkan No.Telpon Anda"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="Alamat" class="form-label label">Alamat</label>
+            <input
+              type="text"
+              class="form-control"
+              id="Alamat"
+              placeholder="Masukkan Alamat Rumah Anda"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="konfirmasi_password" class="form-label label"
+              >Jenis Keperluan</label
+            >
+            <select class="form-select drop-down-list" id="konfirmasi_password">
+              <option selected>Pilih jenis keperluan ...</option>
+              <option class="drop-down-list" value="1">
+                Apa nama hewan peliharaan pertama Anda?
+              </option>
+              <option class="drop-down-list" value="2">
+                Apa nama ibu kandung Anda?
+              </option>
+              <option class="drop-down-list" value="3">
+                Dimana kota Anda lahir?
+              </option>
+            </select>
+          </div>
+          <div class="text-center">
+            <!-- Menggunakan class text-center untuk memindahkan tombol ke tengah -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- footer -->
+    <footer class="footer-kehadiran" id="footer-placeholder"></footer>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/loadComponent.js"></script>
+  </body>
+</html>
