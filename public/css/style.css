@@ -4,13 +4,14 @@
   padding: 0;
   color: #fff;
 }
-
+body {
+  margin-bottom: 10rem;
+}
 .body-kehadiran {
   background-image: url(/images/BGuptp2tk.jpg); /* Ganti dengan path gambar Anda */
   background-size: cover; /* Agar gambar memenuhi seluruh area */
   background-repeat: no-repeat; /* Agar gambar tidak berulang */
   background-position: center; /* Agar gambar berada di tengah */
-  height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -176,48 +177,6 @@
   color: aqua;
 }
 
-/* Halaman KEhadiran */
-.footer-kehadiran {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-.footer-login {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
-
-.card {
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-}
-
-.crop-img img {
-  object-fit: cover;
-  border-radius: 20px 20px 0 0;
-}
-
-.form-Kehadiran {
-  position: absolute;
-  width: 450px;
-  height: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.8); /* Transparansi setengah */
-  color: #000000;
-  border-radius: 25px;
-  padding: 30px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Shadow */
-  display: flex;
-  justify-content: center;
-}
-.drop-down-list {
-  color: #000000;
-}
-
 /* Halaman Login */
 .label {
   color: black;
@@ -275,28 +234,33 @@
 
 @media (max-width: 768px) {
   .header-text {
-    text-align: center;
-    padding: 10px;
-    background-attachment: scroll; /* Disabling fixed background for mobile for better performance */
+    padding: 20px; /* Mengurangi padding untuk memperkecil ukuran */
+    text-align: left; /* Menggeser teks ke kiri */
+    background-attachment: fixed; /* Menjaga gambar latar tetap di tempat saat di-scroll */
+    height: 50vh; /* Mengurangi tinggi hero section */
   }
 
-  .header-text .text-content h3 {
-    font-size: 1.5rem;
+  .header-text .text-content {
+    max-width: 90%; /* Mengurangi lebar maksimal konten teks */
+    margin-left: 10px; /* Menambahkan margin kiri untuk menggeser ke kiri */
   }
 
-  .header-text .text-content h1 {
-    font-size: 2rem;
+  .header-text h1 {
+    font-size: 1.5rem; /* Mengurangi ukuran font untuk judul */
   }
 
-  .header-text .text-content p {
-    font-size: 1rem;
+  .header-text h3 {
+    font-size: 1rem; /* Mengurangi ukuran font untuk subjudul */
   }
 
-  .header-text .text-content a {
-    font-size: 1rem;
-    padding: 10px 20px;
+  .header-text p {
+    font-size: 0.875rem; /* Mengurangi ukuran font untuk paragraf */
   }
 
+  .text-content a {
+    padding: 5px 15px; /* Mengurangi ukuran padding tombol */
+    font-size: 0.875rem; /* Mengurangi ukuran font tombol */
+  }
   .form-login-container {
     position: absolute;
     width: 70%;
@@ -313,7 +277,18 @@
     justify-content: center;
     color: #202020;
   }
-  .footer {
-    height: 100px;
+
+  .single-card {
+    flex: 1 1 calc(40% - 5px); /* Mengatur lebar kartu fitur menjadi 45% dikurangi margin */
+    height: auto; /* Mengatur tinggi kartu fitur secara otomatis */
+    margin: 5px; /* Mengurangi margin kartu fitur */
+  }
+
+  .single-card .info h4 {
+    font-size: 1.25rem; /* Mengurangi ukuran font judul fitur */
+  }
+
+  .single-card .info p {
+    font-size: 0.875rem; /* Mengurangi ukuran font deskripsi fitur */
   }
 }

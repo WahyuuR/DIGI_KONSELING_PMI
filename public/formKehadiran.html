@@ -7,70 +7,103 @@
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <script src="/js/bootstrap/bootstrap.min.js"></script>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5rem;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .dropdown-item {
+        color: black !important;
+      }
+    </style>
   </head>
   <body class="body-kehadiran">
     <!-- nav -->
     <nav id="nav"></nav>
     <!-- Form Kehadiran Tamu -->
-    <div class="form-Kehadiran container row justify-content-center">
-      <div class="card-header">
-        <h3 class="text-center mb-4">Daftar Hadir Tamu</h3>
-      </div>
-      <div class="card-body">
-        <form>
-          <div class="mb-3">
-            <label for="nama" class="form-label label">Nama</label>
-            <input
-              type="text"
-              class="form-control"
-              id="nama"
-              placeholder="Masukkan nama Anda"
-            />
+    <div class="content">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="text-center mb-4">Daftar Hadir Tamu</h3>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="nama" class="form-label">Nama</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nama"
+                      placeholder="Masukkan nama Anda"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="no_telpon" class="form-label">No. Telpon</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="no_telpon"
+                      placeholder="Masukkan No. Telpon Anda"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="alamat" class="form-label">Alamat</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="alamat"
+                      placeholder="Masukkan Alamat Rumah Anda"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="jenis_keperluan" class="form-label"
+                      >Jenis Keperluan</label
+                    >
+                    <select class="form-select" id="jenis_keperluan">
+                      <option class="dropdown-item" selected>
+                        Pilih jenis keperluan...
+                      </option>
+                      <option class="dropdown-item" value="1">
+                        Apa nama hewan peliharaan pertama Anda?
+                      </option>
+                      <option class="dropdown-item" value="2">
+                        Apa nama ibu kandung Anda?
+                      </option>
+                      <option class="dropdown-item" value="3">
+                        Dimana kota Anda lahir?
+                      </option>
+                    </select>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="email" class="form-label label">No.Telpon</label>
-            <input
-              type="text"
-              class="form-control"
-              id="No_Telpon"
-              placeholder="Masukkan No.Telpon Anda"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="Alamat" class="form-label label">Alamat</label>
-            <input
-              type="text"
-              class="form-control"
-              id="Alamat"
-              placeholder="Masukkan Alamat Rumah Anda"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="konfirmasi_password" class="form-label label"
-              >Jenis Keperluan</label
-            >
-            <select class="form-select drop-down-list" id="konfirmasi_password">
-              <option selected>Pilih jenis keperluan ...</option>
-              <option class="drop-down-list" value="1">
-                Apa nama hewan peliharaan pertama Anda?
-              </option>
-              <option class="drop-down-list" value="2">
-                Apa nama ibu kandung Anda?
-              </option>
-              <option class="drop-down-list" value="3">
-                Dimana kota Anda lahir?
-              </option>
-            </select>
-          </div>
-          <div class="text-center">
-            <!-- Menggunakan class text-center untuk memindahkan tombol ke tengah -->
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
     <!-- footer -->
-    <footer class="footer-kehadiran" id="footer-placeholder"></footer>
+    <div id="footer-placeholder"></div>
+
     <script src="/js/bootstrap/bootstrap.min.js"></script>
     <script src="/js/loadComponent.js"></script>
   </body>

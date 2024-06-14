@@ -1,10 +1,10 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const PORT = 5000;
 
 // Middleware untuk file statis
 app.use(express.static("public"));
-
 const pages = {
   "/": "index.html",
   "/login": "login.html",
