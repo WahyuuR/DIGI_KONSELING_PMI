@@ -8,6 +8,5 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error:", error));
   }
   loadComponent("nav", "/components/navbar.html");
-  loadComponent("footer-placeholder", "/components/footer.html");
+  loadComponent("footer", "/components/footer.html");
 });
-  

@@ -4,7 +4,7 @@
   padding: 0;
   color: #fff;
 }
-body {
+html,body {
   margin-bottom: 10rem;
 }
 .body-kehadiran {
