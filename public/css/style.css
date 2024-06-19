@@ -4,7 +4,8 @@
   padding: 0;
   color: #fff;
 }
-html,body {
+html,
+body {
   margin-bottom: 10rem;
 }
 .body-kehadiran {
@@ -40,7 +41,6 @@ html,body {
   box-shadow: none;
   outline: none;
 }
-
 /* hero section */
 .banner {
   background-image: url(/images/loket1.jpg); /* Ganti dengan path gambar Anda */
