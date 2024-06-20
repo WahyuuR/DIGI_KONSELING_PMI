@@ -20,6 +20,7 @@ const pages = {
   "/loket6": "loket6.html",
   "/digitalKonseling": "digitalKonseling.html",
   "/faq": "faq.html",
+  "/konselor": "konselor.html",
 };
 
 Object.entries(pages).forEach(([route, pages]) => {
