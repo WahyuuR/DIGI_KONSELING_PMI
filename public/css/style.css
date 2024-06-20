@@ -4,10 +4,7 @@
   padding: 0;
   color: #fff;
 }
-html,
-body {
-  margin-bottom: 10rem;
-}
+
 .body-kehadiran {
   background-image: url(/images/BGuptp2tk.jpg); /* Ganti dengan path gambar Anda */
   background-size: cover; /* Agar gambar memenuhi seluruh area */
