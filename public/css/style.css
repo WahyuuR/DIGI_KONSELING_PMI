@@ -10,7 +10,7 @@
   background-size: cover; /* Agar gambar memenuhi seluruh area */
   background-repeat: no-repeat; /* Agar gambar tidak berulang */
   background-position: center; /* Agar gambar berada di tengah */
-  display: flex;
+
   flex-direction: column;
 }
 .body-login {
@@ -18,17 +18,16 @@
   background-size: cover; /* Agar gambar memenuhi seluruh area */
   background-repeat: no-repeat; /* Agar gambar tidak berulang */
   background-position: center; /* Agar gambar berada di tengah */
-  height: 100vh;
+  height: 90vh;
 }
-.navbar {
-  background-color: #fff;
-  height: 80px;
-  margin: 0; /* Remove margin to prevent offset */
-  border-radius: 0; /* Remove border-radius for a flush look */
-  padding: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
+
 /* navbar */
+#nav {
+  position: -webkit-sticky; /* Untuk browser WebKit seperti Chrome dan Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 .navbar-toggler {
   border: none;
   font-size: 1.25rem;
@@ -39,22 +38,14 @@
   outline: none;
 }
 /* hero section */
-.banner {
+
+.header-text {
+  height: 70svh;
   background-image: url(/images/loket1.jpg); /* Ganti dengan path gambar Anda */
+  background-position:center; /* Agar gambar berada di tengah */
   background-size: cover; /* Agar gambar memenuhi seluruh area */
   background-repeat: no-repeat; /* Agar gambar tidak berulang */
-  background-position: center; /* Agar gambar berada di tengah */
-  height: 70svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Untuk memposisikan konten secara vertikal di tengah */
-  align-items: center;
-}
-.header-text {
-  height: 100svh;
-  background-image: url(/images/loket1.jpg); /* Ganti dengan path gambar Anda */
-  background-size: cover;
-  background-attachment: fixed; /* This will keep the background image fixed */
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;

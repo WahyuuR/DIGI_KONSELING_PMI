@@ -13,6 +13,12 @@
         width: 100%;
         margin-top: -120px;
       }
+      #nav {
+        position: -webkit-sticky; /* Untuk browser WebKit seperti Chrome dan Safari */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
       .navbar {
         background-color: #fff;
         height: 80px;
@@ -59,7 +65,7 @@
   </head>
   <nav id="nav"></nav>
   <body>
-    <div class="container box-chat">
+    <div class="container box-chat mb-5 mt-5">
       <h2>Chat Bot Interaktif</h2>
       <div id="chatbox" class="mb-3"></div>
       <select id="questionSelect" class="form-control mb-2">

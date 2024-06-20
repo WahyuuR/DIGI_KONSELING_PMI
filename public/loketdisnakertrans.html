@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Bot</title>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
     <style>
       #chatbox {
         display: flex;
@@ -51,17 +52,23 @@
         box-shadow: none;
         outline: none;
       }
-      #footer-placeholder {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        margin-top: -120px;
+
+      #footer {
+        transform: translateY(36.5svh);
+      }
+      @media (max-width: 768px) {
+        .chat-entry {
+          font-size: 12px; /* Atur ukuran font sesuai kebutuhan */
+        }
+        #footer {
+          transform: translateY(150px);
+        }
       }
     </style>
   </head>
   <nav id="nav"></nav>
   <body>
-    <div class="container box-loket">
+    <div class="container box-loket mt-5 mb-5">
       <h2>Loket 1 Disnakertrans</h2>
       <div id="chatbox">
         <div id="questions" class="d-flex flex-column">
