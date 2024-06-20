@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Bot</title>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <style>
       #chatbox {
@@ -53,18 +52,32 @@
         box-shadow: none;
         outline: none;
       }
-      #footer-placeholder {
-        position: fixed;
+      .box-loket {
+        margin-bottom: 422.2px;
+      }
+      #footer {
+        position: -webkit-sticky; /* Untuk browser WebKit seperti Chrome dan Safari */
+        position: sticky;
         bottom: 0;
-        width: 100%;
-        margin-top: -120px;
+        z-index: 1000;
+      }
+      @media (max-width: 768px) {
+        .chat-entry {
+          font-size: 12px; /* Atur ukuran font sesuai kebutuhan */
+        }
+        .box-loket {
+          margin-bottom: 0;
+        }
+        #footer {
+          transform: translateY(150px);
+        }
       }
     </style>
   </head>
   <nav id="nav"></nav>
   <body>
-    <div class="container box-loket">
-      <h2>Loket 1 Disnakertrans</h2>
+    <div class="container box-loket mt-5">
+      <h2>Loket BP2MI Jatim</h2>
       <div id="chatbox">
         <div id="questions" class="d-flex flex-column">
           <!-- Pertanyaan akan diisi oleh JavaScript -->
@@ -74,8 +87,8 @@
         </div>
       </div>
     </div>
-    <div id="footer-placeholder"></div>
-    <script src="/js/lokteDisnaklertrans.js"></script>
+    <div id="footer"></div>
+    <script src="/js/loket2.js"></script>
     <script src="/js/loadComponent.js"></script>
     <script src="/js/bootstrap/bootstrap.min.js"></script>
   </body>

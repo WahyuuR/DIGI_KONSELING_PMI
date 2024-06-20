@@ -9,9 +9,26 @@
     <style>
       .card {
         width: 25rem;
-        border-radius: 10%;
         overflow: hidden;
         margin-bottom: 20px; /* Menambahkan jarak antara setiap baris card */
+      }
+      #nav {
+        position: -webkit-sticky; /* Untuk browser WebKit seperti Chrome dan Safari */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .navbar-toggler {
+        border: none;
+        font-size: 1.25rem;
+      }
+      .navbar-toggler:focus,
+      .btn-close:focus {
+        box-shadow: none;
+        outline: none;
+      }
+      .card img {
+        height: 500px;
       }
     </style>
   </head>
@@ -20,15 +37,16 @@
 
     <div class="container mt-3">
       <div class="row">
+        <h2>Konsultasi Kerja dan Pengaduan</h2>
         <div class="col-md-4">
-          <div class="card">
+          <div class="card rounded-4">
             <img
-              src="/images/profil_suprayitna.jpg"
+              src="/images/profil_DEFRINA.jpg"
               class="card-img-top"
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title">suprayitna, S.H</h5>
+              <h5 class="card-title">Defrina Sukma Satiti, S.IP</h5>
               <p class="card-text">
                 Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang
                 tersedia pada saat jam kerja
@@ -39,14 +57,10 @@
         </div>
 
         <div class="col-md-4">
-          <div class="card">
-            <img
-              src="/images/profil_suprayitna.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+          <div class="card rounded-4">
+            <img src="/images/profil_siti.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
-              <h5 class="card-title">suprayitna, S.H</h5>
+              <h5 class="card-title">Siti Halimatus Sa'diyah, S.E</h5>
               <p class="card-text">
                 Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang
                 tersedia pada saat jam kerja
@@ -57,14 +71,14 @@
         </div>
 
         <div class="col-md-4">
-          <div class="card">
+          <div class="card rounded-4">
             <img
               src="/images/profil_suprayitna.jpg"
               class="card-img-top"
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title">suprayitna, S.H</h5>
+              <h5 class="card-title">Suprayitna, S.H</h5>
               <p class="card-text">
                 Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang
                 tersedia pada saat jam kerja
@@ -73,16 +87,17 @@
             </div>
           </div>
         </div>
-
+        <hr />
+        <h2>Konsultasi Kerja</h2>
         <div class="col-md-4">
-          <div class="card">
+          <div class="card rounded-4">
             <img
-              src="/images/profil_suprayitna.jpg"
+              src="/images/profil_Ferdianto.jpg"
               class="card-img-top"
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title">suprayitna, S.H</h5>
+              <h5 class="card-title">Ferdianto Wido Utomo, S.M</h5>
               <p class="card-text">
                 Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang
                 tersedia pada saat jam kerja
