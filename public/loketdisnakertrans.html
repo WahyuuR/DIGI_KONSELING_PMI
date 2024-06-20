@@ -52,13 +52,21 @@
         box-shadow: none;
         outline: none;
       }
-
+      .box-loket {
+        margin-bottom: 422.2px;
+      }
       #footer {
-        transform: translateY(36.5svh);
+        position: -webkit-sticky; /* Untuk browser WebKit seperti Chrome dan Safari */
+        position: sticky;
+        bottom: 0;
+        z-index: 1000;
       }
       @media (max-width: 768px) {
         .chat-entry {
           font-size: 12px; /* Atur ukuran font sesuai kebutuhan */
+        }
+        .box-loket{
+          margin-bottom: 0;
         }
         #footer {
           transform: translateY(150px);
@@ -68,7 +76,7 @@
   </head>
   <nav id="nav"></nav>
   <body>
-    <div class="container box-loket mt-5 mb-5">
+    <div class="container box-loket mt-5">
       <h2>Loket 1 Disnakertrans</h2>
       <div id="chatbox">
         <div id="questions" class="d-flex flex-column">

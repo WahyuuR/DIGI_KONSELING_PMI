@@ -8,6 +8,12 @@
 
     <link rel="stylesheet" href="/css/footer.css" />
     <style>
+      #nav {
+        position: -webkit-sticky; /* Untuk browser WebKit seperti Chrome dan Safari */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
       #chatbox {
         display: flex;
         justify-content: space-between;
@@ -58,7 +64,7 @@
         box-shadow: none;
         outline: none;
       }
-      #footer-placeholder {
+      #footer {
         position: fixed;
         bottom: 0;
         width: 100%;
