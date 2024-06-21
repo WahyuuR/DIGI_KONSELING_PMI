@@ -28,6 +28,10 @@
   top: 0;
   z-index: 1000;
 }
+.navbar {
+  height: 100px;
+}
+
 .navbar-toggler {
   border: none;
   font-size: 1.25rem;
@@ -41,8 +45,8 @@
 
 .header-text {
   height: 70svh;
-  background-image: url(/images/loket1.jpg); /* Ganti dengan path gambar Anda */
-  background-position:center; /* Agar gambar berada di tengah */
+  background-image: url(/images/LTSA.jpg); /* Ganti dengan path gambar Anda */
+  background-position: center; /* Agar gambar berada di tengah */
   background-size: cover; /* Agar gambar memenuhi seluruh area */
   background-repeat: no-repeat; /* Agar gambar tidak berulang */
   background-attachment: fixed;
@@ -52,6 +56,29 @@
   color: white;
   text-align: center;
   padding: 20px;
+  position: relative;
+}
+.header-text::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.25
+  ); /* Menambahkan lapisan gelap di atas gambar background */
+  z-index: 1;
+}
+.header-text h1,
+.header-text h3,
+.header-text p,
+.header-text a {
+  position: relative;
+  z-index: 2;
 }
 .text-content h1 {
   font-size: 80px;
