@@ -1,6 +1,10 @@
 const questionsAndAnswers = {
-  "Verifikasi data kependudukan":
-    "Berkas yang diperlukan: <br>1. Ektp <br>2. kk<br>3. id siap kerja<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
+  "Permohonan Paspor untuk PMI P2P":
+    "Syarat yang diperlukan:<br>1. Ektp.<br>2. Kk.<br>3. Akte.<br>4. Surat permohonan P3MI.<br>5.Id siap kerja.<br>6. Ijazah.<br>7. Buku nikah. (opsional)<br>7. Paspor lama. (jika sudah punya)<br>8. Surat ijin keluarga yang diketahui oleh kelurahan atau desa.<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
+  "Permohonan paspor untuk PMI G2G":
+    "Syarat yang diperlukan:<br>1. Ektp.<br>2. Kk.<br>3. Akte.<br>4. Surat permohonan P3MI.<br>5.Id siap kerja.<br>6. Ijazah.<br>7. Buku nikah. (opsional)<br>7. Surat permohonan dari imigrasi<br>8. Kontrak kerja yang sudah di validasi oleh kbri sesuai negara penempatan.<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
+  "Perubahan data paspor":
+    "Syarat yang diperlukan:<br>1.Surat penetapan pengadilan<br>2. Ektp.<br>3. Kk.<br.4.Id siap kerja.<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
 };
 
 const questionsContainer = document.getElementById("questions");
@@ -13,6 +17,7 @@ Object.keys(questionsAndAnswers).forEach((question) => {
   questionDiv.onclick = function () {
     displayAnswer(question);
   };
+  questionDiv.style.fontSize = "12px"; // Mengatur ukuran teks pertanyaan
   questionsContainer.appendChild(questionDiv);
 });
 
@@ -31,7 +36,7 @@ function displayAnswer(question) {
   // Membuat tombol WhatsApp
   const whatsappButton = document.createElement("a");
   whatsappButton.href =
-    "https://wa.me/+6282228888134?text=Halo, saya membutuhkan informasi lebih lanjut.";
+    "https://wa.me/+62  82228888134?text=Halo, saya membutuhkan informasi lebih lanjut.";
   whatsappButton.className = "whatsapp-button";
   whatsappButton.target = "_blank";
   whatsappButton.textContent = "Hubungi via WhatsApp";
