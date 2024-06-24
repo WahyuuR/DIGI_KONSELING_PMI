@@ -1,6 +1,8 @@
 const questionsAndAnswers = {
-  "Verifikasi data kependudukan":
-    "Berkas yang diperlukan: <br>1. Ektp <br>2. kk<br>3. id siap kerja<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
+  "PERSYARATAN PENDAFTARAN BPJS KETENAGAKERJAAN PMI":
+    "(DIPASTIKAN SUDAH VERIFIKASI DATA DI BP2MI)<br>1. KTP.<br>2.PASPOR.<br>3.PERJANJIAN KERJA.<br>4. NOMOR WA<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
+  "PERSYARATAN KLAIM JAMINAN KECELAKAAN KERJA BPJS KETENAGAKERJAAN PMI":
+  "1. Kartu Peserta BPJS Ketenagakerjaan.<br>2. Paspor.<br>3. Surat Keterangan dari Pemberi Kerja, Perwakilan Republik Indonesia, KDEI, atau instansi pemerintah di bidang ketenagakerjaan.<br>4. Resume medis dari rumah sakit atau fasilitas kesehatan di negara tujuan penempatan; 5. Bukti pembayaran biaya transportasi di negara tujuan penempatan.<br>6. Rekening tabungan atas nama PMI atau rekening tabungan dari pihak lain yang membayar terlebih dahulu.<br>7. Bukti pembayaran atau dokumen lainnya yang terkait dengan Kecelakaan Kerja.<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini."
 };
 
 const questionsContainer = document.getElementById("questions");
