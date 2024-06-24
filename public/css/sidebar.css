@@ -1,6 +1,6 @@
 /* Google Font Link */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
-    
+
 .sidebar {
   position: fixed;
   left: 0;
@@ -256,8 +256,6 @@ body.dark .mode .sun-moon i.sun {
 body.dark .mode .sun-moon i.moon {
   opacity: 0;
 }
-
-
 
 @media (max-width: 420px) {
   .sidebar li .tooltip {

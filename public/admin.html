@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Admin</title>
+    <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/sidebar.css" />
     <!-- Boxicons CDN Link -->
     <link
@@ -12,79 +13,55 @@
     />
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/datatables.min.css" />
-    <link rel="stylesheet" href="/css/tableDashboard.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      /* Untuk membuat sidebar responsif */
+      .data_table {
+        background: #fff;
+        padding: 15px;
+        box-shadow: 1px 3px 5px #aaa;
+        border-radius: 5px;
+      }
 
-      /* Untuk membuat tabel responsif */
+      .data_table .btn {
+        padding: 5px 10px;
+        margin: 10px 3px 10px 0;
+      }
+
       @media screen and (max-width: 600px) {
         table {
           width: 100%; /* Tabel akan mengisi lebar layar pada layar kecil */
         }
         th,
         td {
+          overflow: hidden;
           padding: 8px; /* Berikan padding pada header dan data tabel */
           text-align: left; /* Atur teks menjadi rata kiri */
+        }
+
+        .container {
+          position: relative; /* Atur posisi relatif pada container */
+        }
+
+        @media screen and (max-width: 600px) {
+          .container {
+            position: relative; /* Atur posisi relatif pada container */
+          }
+
+          .data_table {
+            position: absolute;
+            right: 0; /* Geser container tabel ke kanan */
+          }
         }
       }
     </style>
   </head>
   <body>
-    <div class="sidebar" id="sidebar-placeholder">
-      <div class="logo-details">
-        <i class="bx bxs-copyright icon"></i>
-        <div class="logo_name">DIGI-CONSELING-PMI</div>
-        <i class="bx bx-menu" id="btn"></i>
-      </div>
-      <ul class="nav-list">
-        <li>
-          <i class="bx bx-search"></i>
-          <input type="text" placeholder="Search..." />
-          <span class="tooltip">Search</span>
-        </li>
-        <li>
-          <a href="/index.html">
-            <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Home</span>
-          </a>
-          <span class="tooltip">Home</span>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-user"></i>
-            <span class="links_name">User</span>
-          </a>
-          <span class="tooltip">User</span>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-chat"></i>
-            <span class="links_name">Messages</span>
-          </a>
-          <span class="tooltip">Messages</span>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-cog"></i>
-            <span class="links_name">Setting</span>
-          </a>
-          <span class="tooltip">Setting</span>
-        </li>
-        <li class="profile">
-          <i class="bx bx-log-out" id="log_out"></i>
-        </li>
-      </ul>
-    </div>
+    <div id="nav"></div>
     <!-- data table -->
-    <div class="container" id="data-table">
+    <div class="container mt-5 mb-5" id="data-table">
       <div class="row">
         <div class="data_table">
-          <table
-            id="example"
-            class="table table-striped table-bordered"
-            style="width: 100%"
-          >
+          <table id="example" class="table table-striped table-bordered">
             <thead class="table-dark">
               <tr>
                 <th>Nama</th>
@@ -107,9 +84,9 @@
     </div>
 
     <!--  -->
-
+    <div id="footer"></div>
     <!-- javascript -->
-    <script src="/js/sidebar.js"></script>
+    <script src="/js/loadComponent.js"></script>
     <script src="/js/bootstrap/bootstrap.min.js"></script>
     <script src="/js/jquery-3.6.0.min.js"></script>
     <script src="/js/datatables.min.js"></script>
