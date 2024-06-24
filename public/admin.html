@@ -15,6 +15,21 @@
     <link rel="stylesheet" href="/css/datatables.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+      #nav {
+        position: -webkit-sticky; /* Untuk browser WebKit seperti Chrome dan Safari */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .navbar-toggler {
+        border: none;
+        font-size: 1.25rem;
+      }
+      .navbar-toggler:focus,
+      .btn-close:focus {
+        box-shadow: none;
+        outline: none;
+      }
       .data_table {
         background: #fff;
         padding: 15px;
@@ -28,29 +43,27 @@
       }
 
       @media screen and (max-width: 600px) {
-        table {
-          width: 100%; /* Tabel akan mengisi lebar layar pada layar kecil */
-        }
-        th,
-        td {
-          overflow: hidden;
-          padding: 8px; /* Berikan padding pada header dan data tabel */
-          text-align: left; /* Atur teks menjadi rata kiri */
-        }
-
         .container {
           position: relative; /* Atur posisi relatif pada container */
         }
 
-        @media screen and (max-width: 600px) {
-          .container {
-            position: relative; /* Atur posisi relatif pada container */
-          }
+        .data_table {
+          position: absolute;
+          right: 0; /* Geser container tabel ke kanan */
+        }
+        .data_table {
+          overflow-x: scroll; /* Add horizontal scrollbar */
+        }
 
-          .data_table {
-            position: absolute;
-            right: 0; /* Geser container tabel ke kanan */
-          }
+        .data_table table {
+          width: 100%; /* Make table width 100% */
+          table-layout: fixed; /* Fix table layout to prevent column widths from changing */
+        }
+
+        .data_table thead th,
+        .data_table tbody td {
+          overflow: auto; /* Hide excess text */
+          text-overflow: clip; /* Add ellipsis to indicate truncated text */
         }
       }
     </style>
@@ -84,7 +97,7 @@
     </div>
 
     <!--  -->
-    <div id="footer"></div>
+    <!-- <div id="footer"></div> -->
     <!-- javascript -->
     <script src="/js/loadComponent.js"></script>
     <script src="/js/bootstrap/bootstrap.min.js"></script>
