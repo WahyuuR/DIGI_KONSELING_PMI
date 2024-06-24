@@ -31,7 +31,7 @@ function displayAnswer(question) {
   // Membuat tombol WhatsApp
   const whatsappButton = document.createElement("a");
   whatsappButton.href =
-    "https://wa.me/+6282141040084?text=Halo, saya membutuhkan informasi lebih lanjut.";
+    "https://wa.me/+6282228888134?text=Halo, saya membutuhkan informasi lebih lanjut.";
   whatsappButton.className = "whatsapp-button";
   whatsappButton.target = "_blank";
   whatsappButton.textContent = "Hubungi via WhatsApp";
