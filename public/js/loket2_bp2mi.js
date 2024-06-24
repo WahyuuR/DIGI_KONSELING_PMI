@@ -23,6 +23,7 @@ Object.keys(questionsAndAnswers).forEach((question) => {
   questionDiv.onclick = function () {
     displayAnswer(question);
   };
+    questionDiv.style.fontSize = "10px";
   questionsContainer.appendChild(questionDiv);
 });
 
