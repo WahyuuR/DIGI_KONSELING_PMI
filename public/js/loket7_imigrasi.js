@@ -4,7 +4,7 @@ const questionsAndAnswers = {
   "Permohonan paspor untuk PMI G2G":
     "Syarat yang diperlukan:<br>1. Ektp.<br>2. Kk.<br>3. Akte.<br>4. Surat permohonan P3MI.<br>5.Id siap kerja.<br>6. Ijazah.<br>7. Buku nikah. (opsional)<br>7. Surat permohonan dari imigrasi<br>8. Kontrak kerja yang sudah di validasi oleh kbri sesuai negara penempatan.<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
   "Perubahan data paspor":
-    "Syarat yang diperlukan:<br>1.Surat penetapan pengadilan<br>2. Ektp.<br>3. Kk.<br.4.Id siap kerja.<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
+    "Syarat yang diperlukan:<br>1.Surat penetapan pengadilan<br>2. Ektp.<br>3. Kk.<br>.4.Id siap kerja.<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
 };
 
 const questionsContainer = document.getElementById("questions");
