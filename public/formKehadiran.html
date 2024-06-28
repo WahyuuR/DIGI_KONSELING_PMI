@@ -19,7 +19,7 @@
         color: black !important;
       }
       #footer {
-        transform: translateY(159px);
+        transform: translateY(165px);
       }
       @media (max-width: 768px) {
         #footer {
@@ -44,13 +44,14 @@
                 <h3 class="text-center mb-4">Daftar Hadir Tamu</h3>
               </div>
               <div class="card-body">
-                <form>
+                <form action="/submit" method="post">
                   <div class="mb-3">
                     <label for="nama" class="form-label">Nama</label>
                     <input
                       type="text"
                       class="form-control"
                       id="nama"
+                      name="nama"
                       placeholder="Masukkan nama Anda"
                     />
                   </div>
@@ -60,6 +61,7 @@
                       type="text"
                       class="form-control"
                       id="no_telpon"
+                      name="no_telpon"
                       placeholder="Masukkan No. Telpon Anda"
                     />
                   </div>
@@ -69,6 +71,7 @@
                       type="text"
                       class="form-control"
                       id="alamat"
+                      name="alamat"
                       placeholder="Masukkan Alamat Rumah Anda"
                     />
                   </div>
@@ -76,7 +79,11 @@
                     <label for="jenis_keperluan" class="form-label"
                       >Jenis Keperluan</label
                     >
-                    <select class="form-select" id="jenis_keperluan">
+                    <select
+                      class="form-select"
+                      id="jenis_keperluan"
+                      name="jenis_keperluan"
+                    >
                       <option class="dropdown-item" selected>
                         Pilih jenis keperluan...
                       </option>
@@ -105,7 +112,6 @@
     </div>
     <!-- footer -->
     <div id="footer" class=""></div>
-
     <script src="/js/bootstrap/bootstrap.min.js"></script>
     <script src="/js/loadComponent.js"></script>
   </body>
