@@ -83,14 +83,6 @@
                 <th>Jenis Keperluan</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>Agung gumelang</td>
-                <td>08589697663</td>
-                <td>Jl kapuas no1 jawa tengah</td>
-                <td>Pembaruan data</td>
-              </tr>
-            </tbody>
           </table>
         </div>
       </div>
@@ -98,7 +90,46 @@
 
     <!--  -->
     <!-- <div id="footer"></div> -->
+    <!--... (rest of the HTML code remains the same)... -->
+
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          type: "GET",
+          url: "/get-data",
+          dataType: "json",
+          success: function (data) {
+            $.each(data, function (index, row) {
+              $("#example tbody").append(
+                "<tr>" +
+                  "<td>" +
+                  row.nama +
+                  "</td>" +
+                  "<td>" +
+                  row.nomer_hp +
+                  "</td>" +
+                  "<td>" +
+                  row.alamat +
+                  "</td>" +
+                  "<td>" +
+                  row.jenis_keperluan +
+                  "</td>" +
+                  "</tr>"
+              );
+            });
+            // Initialize DataTables plugin
+            $("#example").DataTable();
+          },
+          error: function (xhr, status, error) {
+            console.error(error);
+          },
+        });
+      });
+    </script>
+
+    <!--... (rest of the HTML code remains the same)... -->
     <!-- javascript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/loadComponent.js"></script>
     <script src="/js/bootstrap/bootstrap.min.js"></script>
     <script src="/js/jquery-3.6.0.min.js"></script>

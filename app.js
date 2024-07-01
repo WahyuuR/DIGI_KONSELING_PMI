@@ -53,6 +53,21 @@ app.post("/submit", (req, res) => {
   });
 });
 
+// Create a route to handle the GET request
+app.get("/get-data", (req, res) => {
+  const query = {
+    text: `SELECT * FROM daftar_hadir`,
+  };
+  pool.query(query, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error retrieving data");
+    } else {
+      res.json(result.rows);
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
