@@ -40,18 +40,18 @@ Object.entries(pages).forEach(([route, pages]) => {
 
 // Create a PostgreSQL pool
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  connectionString: process.env.POSTGRES_URL,
+  ssl: {
+    rejectUnauthorized: false,
+    sslmode: "require",
+  },
 });
 
 // Create a route to handle the form submission
 app.post("/submit", (req, res) => {
   const { nama, no_telpon, alamat, jenis_keperluan } = req.body;
   const query = {
-    text: `INSERT INTO tamu_kehadiran (nama, no_telpon, alamat, jenis_keperluan) VALUES ($1, $2, $3, $4) RETURNING *`,
+    text: `INSERT INTO daftar_hadir (nama, nomer_hp, alamat, jenis_keperluan) VALUES ($1, $2, $3, $4) RETURNING *`,
     values: [nama, no_telpon, alamat, jenis_keperluan],
   };
   pool.query(query, (err, result) => {
