@@ -97,11 +97,11 @@
       $(document).ready(function () {
         $.ajax({
           type: "GET",
-          url: "/get-data",
+          url: "http:linkweb.com/api/get-data/ ",
           dataType: "json",
           success: function (data) {
             $.each(data, function (index, row) {
-              $("#table-body").append(
+              $("#example tbody").append(
                 "<tr>" +
                   "<td>" +
                   row.nama +
@@ -119,7 +119,7 @@
               );
             });
             // Initialize DataTables plugin
-            $("#table-body").DataTable();
+            $("#example").DataTable();
           },
           error: function (xhr, status, error) {
             console.error(error);
