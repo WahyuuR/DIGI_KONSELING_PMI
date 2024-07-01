@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
@@ -83,6 +82,9 @@
                 <th>Jenis Keperluan</th>
               </tr>
             </thead>
+            <tbody id="table-body">
+              <!-- Data will be appended here -->
+            </tbody>
           </table>
         </div>
       </div>
@@ -90,7 +92,6 @@
 
     <!--  -->
     <!-- <div id="footer"></div> -->
-    <!--... (rest of the HTML code remains the same)... -->
 
     <script>
       $(document).ready(function () {
@@ -100,7 +101,7 @@
           dataType: "json",
           success: function (data) {
             $.each(data, function (index, row) {
-              $("#example tbody").append(
+              $("#table-body").append(
                 "<tr>" +
                   "<td>" +
                   row.nama +
@@ -118,7 +119,7 @@
               );
             });
             // Initialize DataTables plugin
-            $("#example").DataTable();
+            $("#table-body").DataTable();
           },
           error: function (xhr, status, error) {
             console.error(error);
@@ -132,7 +133,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/loadComponent.js"></script>
     <script src="/js/bootstrap/bootstrap.min.js"></script>
-    <script src="/js/jquery-3.6.0.min.js"></script>
     <script src="/js/datatables.min.js"></script>
     <script src="/js/pdfmake.min.js"></script>
     <script src="/js/vfs_fonts.js"></script>
