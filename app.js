@@ -1,9 +1,7 @@
 const express = require("express");
 const path = require("path");
+const pool = require("./db");
 const app = express();
-const { Pool } = require("pg");
-const dotenv = require("dotenv");
-dotenv.config();
 const PORT = 5000;
 
 // Middleware to parse request body
@@ -36,15 +34,6 @@ Object.entries(pages).forEach(([route, pages]) => {
   app.get(route, (req, res) => {
     res.sendFile(path.join(__dirname, "public", pages));
   });
-});
-
-// Create a PostgreSQL pool
-const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
-  ssl: {
-    rejectUnauthorized: false,
-    sslmode: "require",
-  },
 });
 
 // Create a route to handle the form submission
