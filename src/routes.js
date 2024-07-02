@@ -23,7 +23,7 @@ const pages = {
 
 Object.entries(pages).forEach(([route, page]) => {
   router.get(route, (req, res) => {
-    res.sendFile(path.join(__dirname, "public", page));
+    res.sendFile(path.join(__dirname, "../public", page));
   });
 });
 
