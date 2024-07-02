@@ -44,7 +44,7 @@
                 <h3 class="text-center mb-4">Daftar Hadir Tamu</h3>
               </div>
               <div class="card-body">
-                <form action="/submit" method="post">
+                <form action="/submit" method="post" id="formKehadiran">
                   <div class="mb-3">
                     <label for="nama" class="form-label">Nama</label>
                     <input
@@ -75,7 +75,7 @@
                       placeholder="Masukkan Alamat Rumah Anda"
                     />
                   </div>
-                  <div class="mb-3">
+                  <div id="jenis_keperluan" class="mb-3">
                     <label for="jenis_keperluan" class="form-label"
                       >Jenis Keperluan</label
                     >
@@ -114,5 +114,28 @@
     <div id="footer" class=""></div>
     <script src="/js/bootstrap/bootstrap.min.js"></script>
     <script src="/js/loadComponent.js"></script>
+    <script>
+      document
+        .getElementById("formKehadiran")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get all form input elements
+          const nama = document.getElementById("nama").value;
+          const no_telpon = document.getElementById("no_telpon").value;
+          const alamat = document.getElementById("alamat").value;
+          const jenis_keperluan =
+            document.getElementById("jenis_keperluan").value;
+
+          // Check if all inputs are filled
+          if (nama && no_telpon && alamat && jenis_keperluan) {
+            // If all inputs are filled, submit the form
+            window.location.href = "/layanan.html";
+          } else {
+            // If any input is empty, show an alert
+            alert("Harap isi semua data!");
+          }
+        });
+    </script>
   </body>
 </html>
