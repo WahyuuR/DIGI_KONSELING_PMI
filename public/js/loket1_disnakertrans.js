@@ -65,7 +65,7 @@ function displayAnswer(question) {
     pdfButton.style.borderRadius = "5px";
     pdfButton.style.position = "absolute";
     pdfButton.style.bottom = "-30px"; // Adjusted bottom position for small screens
-    pdfButton.style.left = "93px";
+    pdfButton.style.right = "14px";
 
     answerDiv.appendChild(pdfButton);
   }
