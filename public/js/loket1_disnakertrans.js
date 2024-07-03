@@ -46,9 +46,9 @@ function displayAnswer(question) {
   whatsappButton.style.backgroundColor = "#25D366";
   whatsappButton.style.padding = "10px 20px";
   whatsappButton.style.borderRadius = "5px";
-  whatsappButton.style.position = "absolute"; // Menetapkan posisi absolut pada tombol
-  whatsappButton.style.bottom = "10px"; // 10px dari bawah container
-  whatsappButton.style.right = "10px"; // 10px dari kanan container
+  whatsappButton.style.position = "absolute";
+  whatsappButton.style.bottom = "10px";
+  whatsappButton.style.right = "10px";
 
   // Membuat tombol Download PDF hanya untuk pertanyaan "Panduan Calon Pekerja Migran Indonesia"
   if (question === "Panduan Pendaftaran Calon Pekerja Migran Indonesia ") {
@@ -63,9 +63,9 @@ function displayAnswer(question) {
     pdfButton.style.backgroundColor = "#FFC107";
     pdfButton.style.padding = "10px 20px";
     pdfButton.style.borderRadius = "5px";
-    pdfButton.style.position = "absolute"; // Menetapkan posisi absolut pada tombol
-    pdfButton.style.bottom = "10px"; // 10px dari bawah container
-    pdfButton.style.left = "10px"; // 10px dari kiri container
+    pdfButton.style.position = "absolute";
+    pdfButton.style.bottom = "-30px"; // Adjusted bottom position for small screens
+    pdfButton.style.left = "93px";
 
     answerDiv.appendChild(pdfButton);
   }
