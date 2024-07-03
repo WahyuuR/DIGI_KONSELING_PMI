@@ -40,6 +40,9 @@
         padding: 5px 10px;
         margin: 10px 3px 10px 0;
       }
+      .show-dropdown {
+        width: 70px;
+      }
 
       @media screen and (max-width: 600px) {
         .container {
@@ -73,6 +76,19 @@
     <div class="container mt-5 mb-5" id="data-table">
       <div class="row">
         <div class="data_table">
+          <div class="row">
+            <div class="col-md-8 show-dropdown">
+              <label>Show</label>
+              <select id="rows-per-page" class="form-control">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="-1">All</option>
+              </select>
+              <label>entries</label>
+            </div>
+          </div>
           <table id="example" class="table table-striped table-bordered">
             <thead class="table-dark">
               <tr>
@@ -91,7 +107,20 @@
     </div>
 
     <!--  -->
-    <!-- <div id="footer"></div> -->
+    <div id="footer"></div>
+
+    <!--... (rest of the HTML code remains the same)... -->
+    <!-- javascript -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/loadComponent.js"></script>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/datatables.min.js"></script>
+    <script src="/js/pdfmake.min.js"></script>
+    <script src="/js/vfs_fonts.js"></script>
 
     <script>
       $(document).ready(function () {
@@ -118,8 +147,23 @@
                   "</tr>"
               );
             });
-            // Initialize DataTables plugin
-            $("#example").DataTable();
+            // Initialize DataTables with Buttons
+            var table = $("#example").DataTable({
+              dom: "Bfrtip",
+              buttons: [
+                "copyHtml5",
+                "excelHtml5",
+                "csvHtml5",
+                "pdfHtml5",
+                "print",
+              ],
+              ordering: false,
+            });
+
+            // Add event listener to the dropdown menu
+            $("#rows-per-page").on("change", function () {
+              table.page.len($(this).val()).draw();
+            });
           },
           error: function (xhr, status, error) {
             console.error(error);
@@ -127,15 +171,5 @@
         });
       });
     </script>
-
-    <!--... (rest of the HTML code remains the same)... -->
-    <!-- javascript -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/js/loadComponent.js"></script>
-    <script src="/js/bootstrap/bootstrap.min.js"></script>
-    <script src="/js/datatables.min.js"></script>
-    <script src="/js/pdfmake.min.js"></script>
-    <script src="/js/vfs_fonts.js"></script>
-    <script src="/js/custom.js"></script>
   </body>
 </html>

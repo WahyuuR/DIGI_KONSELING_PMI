@@ -75,7 +75,7 @@
                       placeholder="Masukkan Alamat Rumah Anda"
                     />
                   </div>
-                  <div id="jenis_keperluan" class="mb-3">
+                  <div class="mb-3">
                     <label for="jenis_keperluan" class="form-label"
                       >Jenis Keperluan</label
                     >
@@ -84,17 +84,20 @@
                       id="jenis_keperluan"
                       name="jenis_keperluan"
                     >
-                      <option class="dropdown-item" selected>
+                      <option class="dropdown-item" value="" selected>
                         Pilih jenis keperluan...
                       </option>
-                      <option class="dropdown-item" value="1">
-                        Apa nama hewan peliharaan pertama Anda?
+                      <option class="dropdown-item" value="Layanan Informasi">
+                        Layanan Informasi
                       </option>
-                      <option class="dropdown-item" value="2">
-                        Apa nama ibu kandung Anda?
+                      <option class="dropdown-item" value="Pengaduan">
+                        Pengaduan
                       </option>
-                      <option class="dropdown-item" value="3">
-                        Dimana kota Anda lahir?
+                      <option class="dropdown-item" value="Konsultasi">
+                        Konsultasi
+                      </option>
+                      <option class="dropdown-item" value="Lainnya">
+                        Lainnya
                       </option>
                     </select>
                   </div>
@@ -130,10 +133,10 @@
           // Check if all inputs are filled
           if (nama && no_telpon && alamat && jenis_keperluan) {
             // If all inputs are filled, submit the form
-            window.location.href = "/layanan.html";
+            this.submit();
           } else {
             // If any input is empty, show an alert
-            alert("Harap isi semua data!");
+            alert("Harap isi semua data, termasuk Jenis Keperluan!");
           }
         });
     </script>
