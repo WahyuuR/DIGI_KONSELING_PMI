@@ -5,6 +5,8 @@ const questionsAndAnswers = {
     "Berkas yang Diperlukan:<br>1. Surat Rekomendasi Paspor dari LTSA-PMI Jatim. <br>2. Menyertakan Foto Copy KTP dan KK. <br>3.  Surat Ijin Kel. Diketahui Kepdes/Lurah. <br>4. Menyertakan Foto Copy Akte Kelahiran/ljasah. <br>5. Menyertakan Foto Copy Surat Nikah / Akte Cerai. <br>6. Draft Kontrak Kerja/Job Offer/Surat Panggilan Kerja dari Perusahaan. <br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
   "Layanan Pencabutan Status Sebagai PMI":
     "Prosedur dan Berkas yang Diperlukan:<br>1. Surat Permohonan. <br>2. Menyertakan Foto Copy KTP dan KK. <br>3. Menyertakan Foto Copy Akte Kelahiran/ljasah. <br>4. Menyertakan Foto Copy Paspor <br>5. Surat Pernyataan yang dibuat oleh yang bersangkutan. <br>6. Surat Pernyataan jaminan. <br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
+  "Panduan Pendaftaran Calon Pekerja Migran Indonesia ":
+    "Untuk Pendaftaran sebagai Calon PMI saudara bisa melihat panduan dengan mendownload panduan dibawah ini<br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
 };
 
 const questionsContainer = document.getElementById("questions");
@@ -47,6 +49,26 @@ function displayAnswer(question) {
   whatsappButton.style.position = "absolute"; // Menetapkan posisi absolut pada tombol
   whatsappButton.style.bottom = "10px"; // 10px dari bawah container
   whatsappButton.style.right = "10px"; // 10px dari kanan container
+
+  // Membuat tombol Download PDF hanya untuk pertanyaan "Panduan Calon Pekerja Migran Indonesia"
+  if (question === "Panduan Pendaftaran Calon Pekerja Migran Indonesia ") {
+    const pdfButton = document.createElement("a");
+    pdfButton.href = "/file/Panduan CPMI.pdf"; // Ganti dengan URL file PDF Anda
+    pdfButton.download = "Panduan CPMI.pdf"; // Ganti dengan nama file PDF yang ingin diunduh
+    pdfButton.className = "pdf-button";
+    pdfButton.target = "_blank";
+    pdfButton.textContent = "Unduh PDF";
+    pdfButton.style.textDecoration = "none";
+    pdfButton.style.color = "white";
+    pdfButton.style.backgroundColor = "#FFC107";
+    pdfButton.style.padding = "10px 20px";
+    pdfButton.style.borderRadius = "5px";
+    pdfButton.style.position = "absolute"; // Menetapkan posisi absolut pada tombol
+    pdfButton.style.bottom = "10px"; // 10px dari bawah container
+    pdfButton.style.left = "10px"; // 10px dari kiri container
+
+    answerDiv.appendChild(pdfButton);
+  }
 
   answerDiv.appendChild(whatsappButton);
   answersContainer.appendChild(answerDiv);
