@@ -10,10 +10,10 @@
       .card {
         width: 20rem;
         overflow: hidden;
-        margin-bottom: 20px; /* Menambahkan jarak antara setiap baris card */
+        margin-bottom: 20px;
       }
       #nav {
-        position: -webkit-sticky; /* Untuk browser WebKit seperti Chrome dan Safari */
+        position: -webkit-sticky; /* Untuk browser WebKit seperti Chrome dan Safari*/
         position: sticky;
         top: 0;
         z-index: 1000;
@@ -30,12 +30,15 @@
       .card img {
         height: 400px;
       }
+      .row {
+        flex-wrap: wrap;
+      }
       @media (max-width: 968px) {
         .card {
           width: 14rem; /* Make the card full-width on tablet screens*/
           margin-bottom: 20px; /* Keep the margin between cards*/
           overflow: hidden;
-          flex: 1 1 calc(50% - 5px); /* Mengatur lebar kartu fitur menjadi 45% dikurangi margin*/
+          flex: 1 1 calc(50% - 5px); /* Set the card width to 45% of the container*/
         }
         .card img {
           height: 200px;
