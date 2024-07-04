@@ -30,6 +30,16 @@
       .card img {
         height: 400px;
       }
+      @media (max-width: 768px) {
+        .card {
+          width: 100%; /* Make the card full-width on tablet screens */
+          margin-bottom: 20px; /* Keep the margin between cards */
+        }
+        .col-md-4 {
+          flex: 0 0 50%; /* Make each column take up 50% of the width on tablet screens */
+          max-width: 50%; /* Set a max-width to prevent columns from getting too wide */
+        }
+      }
     </style>
   </head>
   <body>
