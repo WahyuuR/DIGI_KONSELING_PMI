@@ -44,6 +44,17 @@
           height: 200px;
         }
       }
+      @media (min-width: 1500px) {
+        .card {
+          width: 14rem; /* Make the card full-width on tablet screens*/
+          margin-bottom: 20px; /* Keep the margin between cards*/
+          overflow: hidden;
+          flex: 1 1 calc(50% - 5px); /* Set the card width to 45% of the container*/
+        }
+        .card img {
+          height: 200px;
+        }
+      }
       @media (max-width: 716px) and (max-height: 897px) {
         .card {
           width: 100%; /* Make the card full-width on tablet screens*/
@@ -71,7 +82,7 @@
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title">Defrina Sukma Satiti, S.IP</h5>
+              <h7 class="card-title">Defrina Sukma Satiti, S.IP</h7>
               <p class="card-text">
                 Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang
                 tersedia pada saat jam kerja
