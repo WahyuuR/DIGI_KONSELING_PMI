@@ -3,52 +3,25 @@ const router = express.Router();
 const pool = require("./db");
 const path = require("path");
 
-router.get("/login", (req, res) => {
-  res.redirect("/login.html");
-});
+const routes = [
+  { path: "/login", redirect: "/login.html" },
+  { path: "/", redirect: "/index.html" },
+  { path: "/admin", redirect: "/admin.html" },
+  { path: "/formKehadiran", redirect: "/formKehadiran.html" },
+  { path: "/loket2", redirect: "/loket2.html" },
+  { path: "/loketdisnakertrans", redirect: "/loketdisnakertrans.html" },
+  { path: "/layanan", redirect: "/layanan.html" },
+  { path: "/loket3", redirect: "/loket3.html" },
+  { path: "/loket6", redirect: "/loket6_bpjs.html" },
+  { path: "/loket7", redirect: "/loket7_imigrasi.html" },
+  { path: "/faq", redirect: "/faq.html" },
+  { path: "/konselor", redirect: "/konselor.html" },
+];
 
-router.get("/", (req, res) => {
-  res.redirect("/index.html");
-});
-
-router.get("/admin", (req, res) => {
-  res.redirect("/admin.html");
-});
-
-router.get("/formKehadiran", (req, res) => {
-  res.redirect("/formKehadiran.html");
-});
-
-router.get("/loket2", (req, res) => {
-  res.redirect("/loket2.html");
-});
-
-router.get("/loketdisnakertrans", (req, res) => {
-  res.redirect("/loketdisnakertrans.html");
-});
-
-router.get("/layanan", (req, res) => {
-  res.redirect("/layanan.html");
-});
-
-router.get("/loket3", (req, res) => {
-  res.redirect("/loket3.html");
-});
-
-router.get("/loket6", (req, res) => {
-  res.redirect("/loket6_bpjs.html");
-});
-
-router.get("/loket7", (req, res) => {
-  res.redirect("/loket7_imigrasi.html");
-});
-
-router.get("/faq", (req, res) => {
-  res.redirect("/faq.html");
-});
-
-router.get("/konselor", (req, res) => {
-  res.redirect("/konselor.html");
+routes.forEach((route) => {
+  router.get(route.path, (req, res) => {
+    res.redirect(route.redirect);
+  });
 });
 
 router.post("/submit", (req, res) => {
