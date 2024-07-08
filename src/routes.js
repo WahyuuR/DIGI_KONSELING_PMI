@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const pool = require("./db");
 const path = require("path");
+const cors = require("cors");
 
-// Middleware untuk melayani file statis dari direktori 'public'
-router.use(express.static(path.join(__dirname, "../public")));
+router.use(express.static(path.join(__dirname, "..", "public")));
+// Middleware CORS
+router.use(cors());
 
 const pages = {
   "/": "index.html",
@@ -25,7 +27,7 @@ const pages = {
 
 Object.entries(pages).forEach(([route, page]) => {
   router.get(route, (req, res) => {
-    res.sendFile(path.join(__dirname, "../public", page));
+    res.sendFile(path.join(__dirname, "..", "public", page));
   });
 });
 

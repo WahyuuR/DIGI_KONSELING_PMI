@@ -2,7 +2,6 @@ const express = require("express");
 const middleware = require("./src/middleware");
 const routes = require("./src/routes");
 
-
 const app = express();
 
 middleware(app);
