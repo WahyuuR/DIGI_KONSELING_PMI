@@ -2,29 +2,68 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 const path = require("path");
+const session = require("express-session");
 
-const pages = {
-  "/": "index.html",
-  "/login": "login.html",
-  "/admin": "admin.html",
-  "/formKehadiran": "formKehadiran.html",
-  "/loket2": "loket2.html",
-  "/loketdisnakertrans": "loketdisnakertrans.html",
-  "/layanan": "layanan.html",
-  "/Konseling": "Konseling.html",
-  "/loket3": "loket3.html",
-  "/loket4": "loket4.html",
-  "/loket5": "loket5.html",
-  "/loket6": "loket6.html",
-  "/digitalKonseling": "digitalKonseling.html",
-  "/faq": "faq.html",
-  "/konselor": "konselor.html",
-};
+router.get("/login", (req, res) => {
+  console.log(req.sessionID);
+  const { username, password } = req.body;
+  if (username && password) {
+    if (req.session.authenticated) {
+      res.json(req.session);
+    } else {
+      if (password === "admin") {
+        req.session.authenticated = true;
+        req.session.user = {
+          username,
+          password,
+        };
+        res.json(req.session);
+      } else {
+        res.status(403).json({ msg: "bad Credential" });
+      }
+    }
+  } else res.status(403).json({ msg: "bad Credential" });
+  res.redirect("/login.html");
+});
 
-Object.entries(pages).forEach(([route, page]) => {
-  router.get(route, (req, res) => {
-    res.sendFile(path.join(__dirname, "../public", page));
-  });
+router.get("/admin", (req, res) => {
+  res.redirect("/admin.html");
+});
+
+router.get("/formKehadiran", (req, res) => {
+  res.redirect("/formKehadiran.html");
+});
+
+router.get("/loket2", (req, res) => {
+  res.redirect("/loket2.html");
+});
+
+router.get("/loketdisnakertrans", (req, res) => {
+  res.redirect("/loketdisnakertrans.html");
+});
+
+router.get("/layanan", (req, res) => {
+  res.redirect("/layanan.html");
+});
+
+router.get("/loket3", (req, res) => {
+  res.redirect("/loket3.html");
+});
+
+router.get("/loket6", (req, res) => {
+  res.redirect("/loket6_bpjs.html");
+});
+
+router.get("/loket7", (req, res) => {
+  res.redirect("/loket7_imigrasi.html");
+});
+
+router.get("/faq", (req, res) => {
+  res.redirect("/faq.html");
+});
+
+router.get("/konselor", (req, res) => {
+  res.redirect("/konselor.html");
 });
 
 router.post("/submit", (req, res) => {
