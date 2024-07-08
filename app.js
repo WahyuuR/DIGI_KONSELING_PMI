@@ -1,7 +1,7 @@
 const express = require("express");
 const middleware = require("./src/middleware");
 const routes = require("./src/routes");
-const session = require("express-session");
+
 
 const app = express();
 
