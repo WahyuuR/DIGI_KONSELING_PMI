@@ -26,6 +26,10 @@ router.get("/login", (req, res) => {
   res.redirect("/login.html");
 });
 
+router.get("/", (req, res) => {
+  res.redirect("/index.html");
+});
+
 router.get("/admin", (req, res) => {
   res.redirect("/admin.html");
 });
