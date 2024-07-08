@@ -2,17 +2,8 @@ const express = require("express");
 const middleware = require("./src/middleware");
 const routes = require("./src/routes");
 const session = require("express-session");
-const store = new session.MemoryStore();
-const app = express();
 
-app.use(
-  session({
-    secret: "some secret",
-    cookie: { maxAge: 30 },
-    saveUninitialized: false,
-    store,
-  })
-);
+const app = express();
 
 middleware(app);
 app.use(routes);

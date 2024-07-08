@@ -2,27 +2,8 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 const path = require("path");
-const session = require("express-session");
 
 router.get("/login", (req, res) => {
-  console.log(req.sessionID);
-  const { username, password } = req.body;
-  if (username && password) {
-    if (req.session.authenticated) {
-      res.json(req.session);
-    } else {
-      if (password === "admin") {
-        req.session.authenticated = true;
-        req.session.user = {
-          username,
-          password,
-        };
-        res.json(req.session);
-      } else {
-        res.status(403).json({ msg: "bad Credential" });
-      }
-    }
-  } else res.status(403).json({ msg: "bad Credential" });
   res.redirect("/login.html");
 });
 
