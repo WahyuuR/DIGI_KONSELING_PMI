@@ -3,24 +3,29 @@ const router = express.Router();
 const pool = require("./db");
 const path = require("path");
 
-const routes = [
-  { path: "/login", redirect: "/login.html" },
-  { path: "/", redirect: "/index.html" },
-  { path: "/admin", redirect: "/admin.html" },
-  { path: "/formKehadiran", redirect: "/formKehadiran.html" },
-  { path: "/loket2", redirect: "/loket2.html" },
-  { path: "/loketdisnakertrans", redirect: "/loketdisnakertrans.html" },
-  { path: "/layanan", redirect: "/layanan.html" },
-  { path: "/loket3", redirect: "/loket3.html" },
-  { path: "/loket6", redirect: "/loket6_bpjs.html" },
-  { path: "/loket7", redirect: "/loket7_imigrasi.html" },
-  { path: "/faq", redirect: "/faq.html" },
-  { path: "/konselor", redirect: "/konselor.html" },
-];
+// Middleware untuk melayani file statis dari direktori 'public'
+router.use(express.static(path.join(__dirname, "../public")));
 
-routes.forEach((route) => {
-  router.get(route.path, (req, res) => {
-    res.redirect(route.redirect);
+const pages = {
+  "/": "index.html",
+  "/login": "login.html",
+  "/admin": "admin.html",
+  "/formKehadiran": "formKehadiran.html",
+  "/loket2": "loket2.html",
+  "/loketdisnakertrans": "loketdisnakertrans.html",
+  "/layanan": "layanan.html",
+  "/Konseling": "Konseling.html",
+  "/loket3": "loket3.html",
+  "/loket4": "loket4.html",
+  "/loket5": "loket5.html",
+  "/loket6": "loket6.html",
+  "/digitalKonseling": "digitalKonseling.html",
+  "/faq": "faq.html",
+};
+
+Object.entries(pages).forEach(([route, page]) => {
+  router.get(route, (req, res) => {
+    res.sendFile(path.join(__dirname, "../public", page));
   });
 });
 
