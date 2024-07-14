@@ -1,9 +1,9 @@
 const questionsAndAnswers = {
-  "Pembuatan Paspor PMI":
+  "Verivikasi Dokumen untuk Pembuatan Paspor PMI":
     "Dokumen yang Diperlukan:<br>1. Surat Permohonan dari PPPMI. <br>2. Lampiran Surat Permohonan. <br>3. Surat Ijin Kel. Diketahui Kepdes/Lurah. <br>4. Menyertakan Foto Copy KTP dan KK.<br>5. Menyertakan Foto Copy Akte Kelahiran/ljasah. <br>6. Menyertakan Foto Copy Surat Nikah / Akte Cerai. <br>7. Rekom dari Disnaker Kab/Kota. <br>8. Terregistrasi ID SISKOTKALN.<br>9. SIP (Surat ijin Pengerahan) Negara Tujuan. <br><br> Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
-  "Layanan Pengadaan Rekomendasi Paspor PMI Mandiri":
+  "Verivikasi Dokumen untuk Rekomendasi Paspor PMI Mandiri":
     "Berkas yang Diperlukan:<br>1. Surat Rekomendasi Paspor dari LTSA-PMI Jatim. <br>2. Menyertakan Foto Copy KTP dan KK. <br>3.  Surat Ijin Kel. Diketahui Kepdes/Lurah. <br>4. Menyertakan Foto Copy Akte Kelahiran/ljasah. <br>5. Menyertakan Foto Copy Surat Nikah / Akte Cerai. <br>6. Draft Kontrak Kerja/Job Offer/Surat Panggilan Kerja dari Perusahaan. <br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
-  "Layanan Pencabutan Status Sebagai PMI":
+  "Verivikasi Dokumen untuk Pencabutan Status Sebagai PMI":
     "Prosedur dan Berkas yang Diperlukan:<br>1. Surat Permohonan. <br>2. Menyertakan Foto Copy KTP dan KK. <br>3. Menyertakan Foto Copy Akte Kelahiran/ljasah. <br>4. Menyertakan Foto Copy Paspor <br>5. Surat Pernyataan yang dibuat oleh yang bersangkutan. <br>6. Surat Pernyataan jaminan. <br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
   "Panduan Pendaftaran Calon Pekerja Migran Indonesia ":
     "Untuk Pendaftaran sebagai Calon PMI saudara bisa melihat panduan dengan mendownload panduan dibawah ini<br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
