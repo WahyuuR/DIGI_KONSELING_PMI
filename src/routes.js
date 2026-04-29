@@ -282,11 +282,9 @@ router.post(
   }
 );
 
-// -------- WA Configuration (file-based, no DB needed) --------
-const WA_CONFIG_PATH = path.join(__dirname, "..", "wa-config.json");
+// -------- WA Configuration (Database-backed for Vercel compatibility) --------
 const DEFAULT_WA_CONFIG = {
   waMessage: "Halo, saya membutuhkan informasi lebih lanjut.",
-
   loket1_disnakertrans: "+6281358438471",
   detail_disnakertrans: "Layanan ketenagakerjaan terintegrasi.",
   qa_disnakertrans: JSON.stringify({
@@ -324,29 +322,22 @@ const DEFAULT_WA_CONFIG = {
     "Permohonan paspor untuk PMI G2G": "Syarat yang diperlukan:<br>1. Ektp.<br>2. Kk.<br>3. Akte.<br>4. Surat permohonan P3MI.<br>5.Id siap kerja.<br>6. Ijazah.<br>7. Buku nikah. (opsional)<br>7. Surat permohonan dari imigrasi<br>8. Kontrak kerja yang sudah di validasi oleh kbri sesuai negara penempatan.<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
     "Perubahan data paspor": "Syarat yang diperlukan:<br>1.Surat penetapan pengadilan<br>2. Ektp.<br>3. Kk.<br>.4.Id siap kerja.<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini."
   }),
-
   konselor_1_name: "Defrina Sukma Satiti, S.IP",
   konselor_1_wa: "+6285732747920",
   konselor_1_img: "/images/profil_DEFRINA.jpg",
-  
   konselor_2_name: "Siti Halimatus Sa'diyah, S.E",
   konselor_2_wa: "+6285335909931",
   konselor_2_img: "/images/profil_Siti.jpg",
-  
   konselor_3_name: "Suprayitna, S.H",
   konselor_3_wa: "+6282141040084",
   konselor_3_img: "/images/profil_suprayitna.jpg",
-
   konselor_4_name: "Dina Nur Fitriani, S.Psi",
   konselor_4_wa: "+6285648323939",
   konselor_4_img: "/images/profil_dina.jpg",
-
   konselor_5_name: "Ferdianto, S.Psi",
   konselor_5_wa: "+6281232926465",
   konselor_5_img: "/images/profil_Ferdianto.jpg",
-  
   link_informasi_penempatan: "https://forms.gle/bsq9WMS4RxmFB9pM7",
-
   qa_faq: JSON.stringify({
     "Pembuatan Paspor PMI": "Dokumen yang Diperlukan:<br>1. Surat Permohonan dari PPPMI. <br>2. Lampiran Surat Permohonan. <br>3. Surat Ijin Kel. Diketahui Kepdes/Lurah. <br>4. Menyertakan Foto Copy KTP dan KK.<br>5. Menyertakan Foto Copy Akte Kelahiran/ljasah. <br>6. Menyertakan Foto Copy Surat Nikah / Akte Cerai. <br>7. Rekom dari Disnaker Kab/Kota. <br>8. Terregistrasi ID SISKOTKALN.<br>9. SIP (Surat ijin Pengerahan) Negara Tujuan. <br><br> Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
     "Layanan Pengadaan Rekomendasi Paspor PMI Mandiri": "Berkas yang Diperlukan:<br>1. Surat Rekomendasi Paspor dari LTSA-PMI Jatim. <br>2. Menyertakan Foto Copy KTP dan KK. <br>3.  Surat Ijin Kel. Diketahui Kepdes/Lurah. <br>4. Menyertakan Foto Copy Akte Kelahiran/ljasah. <br>5. Menyertakan Foto Copy Surat Nikah / Akte Cerai <br>6. Draft Kontrak Kerja/Job Offer/Surat Panggilan Kerja dari Perusahaan. <br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
@@ -356,42 +347,60 @@ const DEFAULT_WA_CONFIG = {
     "PERSYARATAN PENDAFTARAN BPJS KETENAGAKERJAAN PMI": "(DIPASTIKAN SUDAH VERIFIKASI DATA DI BP2MI)<br>1. KTP.<br>2.PASPOR.<br>3.PERJANJIAN KERJA.<br>4. NOMOR WA<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini.",
     "Permohonan Paspor untuk PMI P2P": "Syarat yang diperlukan:<br>1. Ektp.<br>2. Kk.<br>3. Akte.<br>4. Surat permohonan P3MI.<br>5.Id siap kerja.<br>6. Ijazah.<br>7. Buku nikah. (opsional)<br>7. Paspor lama. (jika sudah punya)<br>8. Surat ijin keluarga yang diketahui oleh kelurahan atau desa.<br><br>Apabila masih ada yang saudara kurang pahami bisa menghubungi kontak yang ada dibawah ini."
   }),
-
   detail_konselor: "Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang tersedia pada saat jam kerja.",
 };
 
-function readWaConfig() {
+async function ensureWaConfig() {
   try {
-    if (!fs.existsSync(WA_CONFIG_PATH)) {
-      fs.writeFileSync(
-        WA_CONFIG_PATH,
-        JSON.stringify(DEFAULT_WA_CONFIG, null, 2),
-        "utf8"
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS wa_config (
+        id SERIAL PRIMARY KEY,
+        config_json JSONB NOT NULL,
+        updated_at TIMESTAMPTZ DEFAULT NOW()
       );
-      return { ...DEFAULT_WA_CONFIG };
+    `);
+    const { rows } = await pool.query("SELECT id FROM wa_config LIMIT 1");
+    if (rows.length === 0) {
+      await pool.query("INSERT INTO wa_config (config_json) VALUES ($1)", [JSON.stringify(DEFAULT_WA_CONFIG)]);
     }
-
-    const raw = fs.readFileSync(WA_CONFIG_PATH, "utf8");
-    const parsed = JSON.parse(raw);
-    return { ...DEFAULT_WA_CONFIG, ...(parsed || {}) };
   } catch (err) {
-    console.error("Gagal membaca wa-config.json:", err);
-    return { ...DEFAULT_WA_CONFIG };
+    console.error("DB Error in ensureWaConfig:", err);
   }
 }
 
-function writeWaConfig(next) {
-  const merged = { ...readWaConfig(), ...(next || {}) };
-  fs.writeFileSync(WA_CONFIG_PATH, JSON.stringify(merged, null, 2), "utf8");
-  return merged;
+async function readWaConfig() {
+  try {
+    await ensureWaConfig();
+    const { rows } = await pool.query("SELECT config_json FROM wa_config ORDER BY id ASC LIMIT 1");
+    if (rows.length > 0) {
+      const parsed = typeof rows[0].config_json === 'string' ? JSON.parse(rows[0].config_json) : rows[0].config_json;
+      return { ...DEFAULT_WA_CONFIG, ...parsed };
+    }
+  } catch (err) {
+    console.error("Gagal membaca wa_config dari DB:", err);
+  }
+  return { ...DEFAULT_WA_CONFIG };
+}
+
+async function writeWaConfig(next) {
+  try {
+    const current = await readWaConfig();
+    const merged = { ...current, ...(next || {}) };
+    await pool.query("UPDATE wa_config SET config_json=$1, updated_at=NOW()", [JSON.stringify(merged)]);
+    return merged;
+  } catch (err) {
+    console.error("Gagal menulis wa_config ke DB:", err);
+    throw err;
+  }
 }
 
 // Public endpoint (dipakai oleh front-end untuk membuat link wa.me).
-router.get("/wa-config", (req, res) => {
-  return res.json(readWaConfig());
+router.get("/wa-config", async (req, res) => {
+  const config = await readWaConfig();
+  return res.json(config);
 });
 
-// Admin update WA config (file-based).
+// Admin update WA config (database-backed).
 router.post("/admin/wa-config", requireAdminAuth, async (req, res) => {
   try {
     const allowedKeys = Object.keys(DEFAULT_WA_CONFIG);
@@ -404,11 +413,11 @@ router.post("/admin/wa-config", requireAdminAuth, async (req, res) => {
       }
     }
 
-    const saved = writeWaConfig(next);
+    const saved = await writeWaConfig(next);
     return res.status(200).json({ ok: true, config: saved });
   } catch (err) {
     console.error(err);
-    return res.status(500).send("Gagal menyimpan konfigurasi WA.");
+    return res.status(500).send("Gagal menyimpan konfigurasi layanan.");
   }
 });
 
