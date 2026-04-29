@@ -6,7 +6,7 @@ const cors = require("cors");
 
 const multer = require("multer");
 const XLSX = require("xlsx");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const fs = require("fs");
 
 router.use(express.static(path.join(__dirname, "..", "public")));
@@ -28,7 +28,7 @@ const pages = {
   "/loket2": "loket2.html",
   "/loketdisnakertrans": "loketdisnakertrans.html",
   "/layanan": "layanan.html",
-  "/Konseling": "Konseling.html",
+  "/Konseling": "konselor.html",
   "/loket3": "loket3.html",
   "/loket4": "loket4.html",
   "/loket5": "loket5.html",

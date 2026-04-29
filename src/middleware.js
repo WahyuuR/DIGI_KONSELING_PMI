@@ -5,7 +5,7 @@ const session = require("express-session");
 const middleware = (app) => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use(express.static("../public"));
+  app.use(express.static(path.join(__dirname, "..", "public")));
 
   // Session untuk fitur login admin & perubahan username/password.
   // NOTE: untuk produksi, sebaiknya set `SESSION_SECRET` di `.env`.
