@@ -8,48 +8,71 @@
   height: 100%;
   width: 78px;
   background: #11101d;
-  padding: 6px 14px;
+  padding: 6px 0; /* Removed horizontal padding */
   z-index: 99;
   transition: all 0.5s ease;
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.sidebar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 .sidebar.open {
   width: 250px;
+  padding: 6px 14px; /* Restore padding when open */
 }
 .sidebar .logo-details {
   height: 60px;
   display: flex;
   align-items: center;
   position: relative;
+  justify-content: center;
+}
+.sidebar.open .logo-details {
+  justify-content: flex-start;
 }
 .sidebar .logo-details .icon {
   opacity: 0;
+  display: none;
   transition: all 0.5s ease;
+}
+.sidebar.open .logo-details .icon {
+  opacity: 1;
+  display: block;
+  margin-right: 10px;
 }
 .sidebar .logo-details .logo_name {
   color: #fff;
   font-size: 13px;
   font-weight: 600;
   opacity: 0;
+  display: none;
   transition: all 0.5s ease;
 }
-.sidebar.open .logo-details .icon,
 .sidebar.open .logo-details .logo_name {
   opacity: 1;
+  display: block;
 }
 .sidebar .logo-details #btn {
   position: absolute;
   top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  font-size: 22px;
-  transition: all 0.4s ease;
+  left: 50%; /* Use left 50% for standard centering */
+  transform: translate(-50%, -50%);
   font-size: 23px;
-  text-align: center;
   cursor: pointer;
   transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
 }
 .sidebar.open .logo-details #btn {
-  text-align: right;
+  left: auto;
+  right: 0;
+  transform: translateY(-50%);
+  justify-content: flex-end;
 }
 .sidebar i {
   color: #fff;
@@ -61,12 +84,17 @@
 }
 .sidebar .nav-list {
   margin-top: 20px;
-  height: 100%;
+  height: calc(100% - 140px);
+  padding: 0; /* Remove default UL padding */
 }
 .sidebar li {
   position: relative;
   margin: 8px 0;
   list-style: none;
+  padding: 0 14px; /* Added padding here instead of sidebar */
+}
+.sidebar:not(.open) li {
+  padding: 0; /* No padding when collapsed to allow centering */
 }
 .sidebar li .tooltip {
   position: absolute;
@@ -134,9 +162,13 @@
   width: 100%;
   border-radius: 12px;
   align-items: center;
+  justify-content: center; /* Center icon when collapsed */
   text-decoration: none;
   transition: all 0.4s ease;
   background: #11101d;
+}
+.sidebar.open li a {
+  justify-content: flex-start;
 }
 .sidebar li a:hover {
   background: #fff;
@@ -147,12 +179,15 @@
   font-weight: 400;
   white-space: nowrap;
   opacity: 0;
+  display: none;
   pointer-events: none;
   transition: 0.4s;
 }
 .sidebar.open li a .links_name {
   opacity: 1;
+  display: block;
   pointer-events: auto;
+  margin-left: 10px;
 }
 .sidebar li a:hover .links_name,
 .sidebar li a:hover i {
@@ -164,6 +199,13 @@
   line-height: 50px;
   font-size: 18px;
   border-radius: 12px;
+  width: 100%; /* Ensure it takes full width for centering */
+  text-align: center;
+  min-width: 0;
+}
+.sidebar.open li i {
+  width: 50px; /* Reset width when open */
+  min-width: 50px;
 }
 .sidebar li.profile {
   position: fixed;
@@ -171,18 +213,26 @@
   width: 78px;
   left: 0;
   bottom: -8px;
-  padding: 10px 14px;
+  padding: 10px 0; /* Center logout button */
   background: #1d1b31;
   transition: all 0.5s ease;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .sidebar.open li.profile {
   width: 250px;
+  padding: 10px 14px;
+  justify-content: flex-start;
 }
 .sidebar li .profile-details {
-  display: flex;
+  display: none; /* Hide details when collapsed */
   align-items: center;
   flex-wrap: nowrap;
+}
+.sidebar.open li .profile-details {
+  display: flex;
 }
 .sidebar li img {
   height: 45px;
@@ -204,18 +254,26 @@
 .sidebar .profile #log_out {
   position: absolute;
   top: 50%;
-  right: 0;
-  transform: translateY(-50%);
+  left: 50%; /* Center using left */
+  transform: translate(-50%, -50%);
   background: #1d1b31;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  border-radius: 0px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
   transition: all 0.5s ease;
+}
+.sidebar .profile #log_out:hover {
+  background: #fff;
 }
 .sidebar.open .profile #log_out {
   width: 50px;
   background: none;
+  left: auto;
+  right: 10px;
+  transform: translateY(-50%);
 }
 .home-section {
   position: relative;
@@ -230,6 +288,11 @@
 .sidebar.open ~ .home-section {
   left: 250px;
   width: calc(100% - 250px);
+}
+
+/* Ensure background is light blue after login */
+body {
+  background-color: #e4e9f7 !important;
 }
 
 .sidebar .menu-bar .mode {

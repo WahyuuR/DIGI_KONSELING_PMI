@@ -1,44 +1,76 @@
-<nav
-  class="navbar navbar-expand-lg bg-body-tertiary  shadow-lg p-3"
-  id="nav"
->
-  <div class="container-fluid">
+<style>
+  .navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    padding: 12px 0;
+    transition: all 0.3s ease;
+  }
+  .nav-link {
+    font-weight: 600;
+    color: #333 !important;
+    padding: 8px 20px !important;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background-color: #0d6efd;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+  .nav-link:hover::after, .nav-link.active::after {
+    transform: scaleX(1);
+  }
+  .nav-link:hover, .nav-link.active {
+    color: #0d6efd !important;
+  }
+  .navbar-brand img {
+    transition: transform 0.3s;
+  }
+  .navbar-brand:hover img {
+    transform: scale(1.05);
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
     <a class="navbar-brand" href="/index.html">
-      <img src="/images/NAVBARBRAND.png" alt="Logo" style="height: 50px" />
+      <img src="/images/NAVBARBRAND.png" alt="Logo" style="height: 45px" />
     </a>
+    
     <button
-      class="navbar-toggler navbar-toggler-start"
+      class="navbar-toggler border-0 shadow-none"
       type="button"
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasNavbar"
-      aria-controls="offcanvasNavbar"
-      aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div
       class="offcanvas offcanvas-end"
       tabindex="-1"
       id="offcanvasNavbar"
-      aria-labelledby="offcanvasNavbarLabel"
     >
-      <div class="offcanvas-header">
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
+      <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title fw-bold text-primary">DIGI-KONSELING</h5>
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas"></button>
       </div>
+      
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/index.html"
-              >Home</a
-            >
+            <a class="nav-link active" href="/index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login.html">Login</a>
+            <a class="nav-link" href="/login.html">Login Admin</a>
           </li>
         </ul>
       </div>

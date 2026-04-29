@@ -3,140 +3,99 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DAFTAR HADIR</title>
+    <title>Daftar Hadir | DIGI-KONSELING-PMI</title>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
-
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <style>
-      .card {
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-      }
-      .dropdown-item {
-        color: black !important;
-      }
-      #footer {
-        transform: translateY(165px);
-      }
-      @media (max-width: 768px) {
-        #footer {
-          transform: translateY(150px);
-        }
+      .body-kehadiran {
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       }
     </style>
   </head>
   <body class="body-kehadiran">
-    <!-- nav -->
-
-    <nav id="nav" class="mb-5"></nav>
-
     <!-- Form Kehadiran Tamu -->
-
-    <div class="content mb-5">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-8">
-            <div class="card">
-              <div class="card-header text-white">
-                <h3 class="text-center mb-4">Daftar Hadir Tamu</h3>
-              </div>
-              <div class="card-body">
-                <form action="/submit" method="post" id="formKehadiran">
-                  <div class="mb-3">
-                    <label for="nama" class="form-label">Nama</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="nama"
-                      name="nama"
-                      placeholder="Masukkan nama Anda"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="no_telpon" class="form-label">No. Telpon</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="no_telpon"
-                      name="no_telpon"
-                      placeholder="Masukkan No. Telpon Anda"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="alamat" class="form-label">Alamat</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="alamat"
-                      name="alamat"
-                      placeholder="Masukkan Alamat Rumah Anda"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="jenis_keperluan" class="form-label"
-                      >Jenis Keperluan</label
-                    >
-                    <select
-                      class="form-select"
-                      id="jenis_keperluan"
-                      name="jenis_keperluan"
-                    >
-                      <option class="dropdown-item" value="" selected>
-                        Pilih jenis keperluan...
-                      </option>
-                      <option class="dropdown-item" value="Layanan Informasi">
-                        Layanan Informasi
-                      </option>
-                      <option class="dropdown-item" value="Pengaduan">
-                        Pengaduan
-                      </option>
-                      <option class="dropdown-item" value="Konsultasi">
-                        Konsultasi
-                      </option>
-                      <option class="dropdown-item" value="Lainnya">
-                        Lainnya
-                      </option>
-                    </select>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">
-                      Submit
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+    <div class="form-login-container" style="max-width: 600px;">
+      <h3 class="text-center mb-4">Daftar Hadir Tamu</h3>
+      <form action="/submit" method="post" id="formKehadiran">
+        <div class="form-group mb-3">
+          <label for="nama">Nama</label>
+          <input
+            type="text"
+            class="form-control form-control-tabung"
+            id="nama"
+            name="nama"
+            placeholder="Masukkan nama Anda"
+            required
+          />
         </div>
+        <div class="form-group mb-3">
+          <label for="no_telpon">No. Telpon</label>
+          <input
+            type="text"
+            class="form-control form-control-tabung"
+            id="no_telpon"
+            name="no_telpon"
+            placeholder="Masukkan No. Telpon Anda"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="alamat">Alamat</label>
+          <input
+            type="text"
+            class="form-control form-control-tabung"
+            id="alamat"
+            name="alamat"
+            placeholder="Masukkan Alamat Rumah Anda"
+            required
+          />
+        </div>
+        <div class="form-group mb-4">
+          <label for="jenis_keperluan">Jenis Keperluan</label>
+          <select
+            class="form-select form-control-tabung"
+            id="jenis_keperluan"
+            name="jenis_keperluan"
+            required
+          >
+            <option value="" selected disabled>Pilih jenis keperluan...</option>
+            <option value="Layanan Informasi">Layanan Informasi</option>
+            <option value="Pengaduan">Pengaduan</option>
+            <option value="Konsultasi">Konsultasi</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+        </div>
+        <button type="submit" class="login-btn">Kirim Kehadiran</button>
+      </form>
+      <div class="text-center mt-4">
+        <a href="/index.html" class="text-white text-decoration-none small opacity-75">
+          <i class="bx bx-left-arrow-alt"></i> Kembali ke Home
+        </a>
       </div>
     </div>
-    <!-- footer -->
-    <div id="footer" class=""></div>
+
     <script src="/js/bootstrap/bootstrap.min.js"></script>
-    <script src="/js/loadComponent.js"></script>
     <script>
       document
         .getElementById("formKehadiran")
         .addEventListener("submit", function (event) {
           event.preventDefault();
 
-          // Get all form input elements
           const nama = document.getElementById("nama").value;
           const no_telpon = document.getElementById("no_telpon").value;
           const alamat = document.getElementById("alamat").value;
-          const jenis_keperluan =
-            document.getElementById("jenis_keperluan").value;
+          const jenis_keperluan = document.getElementById("jenis_keperluan").value;
 
-          // Check if all inputs are filled
           if (nama && no_telpon && alamat && jenis_keperluan) {
-            // If all inputs are filled, submit the form
             this.submit();
           } else {
-            // If any input is empty, show an alert
-            alert("Harap isi semua data, termasuk Jenis Keperluan!");
+            alert("Harap isi semua data!");
           }
         });
     </script>

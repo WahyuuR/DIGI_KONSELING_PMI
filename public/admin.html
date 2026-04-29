@@ -70,9 +70,299 @@
         }
       }
     </style>
+    <script>
+      // Redirect untuk menghindari tampilan admin versi lama yang tidak sinkron.
+      window.location.replace("/admin-data");
+    </script>
   </head>
   <body>
     <div id="nav"></div>
+    <nav class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxs-copyright icon"></i>
+        <div class="logo_name">DIGI-CONSELING-PMI</div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+
+      <ul class="nav-list">
+        <li>
+          <a href="/admin-data">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Data</span>
+          </a>
+          <span class="tooltip">Data</span>
+        </li>
+        <li>
+          <a href="/admin-wa">
+            <i class="bx bx-chat"></i>
+            <span class="links_name">Edit Detail Layanan</span>
+          </a>
+          <span class="tooltip">Edit Detail Layanan</span>
+        </li>
+        <li>
+          <a href="/admin-import">
+            <i class="bx bx-upload"></i>
+            <span class="links_name">Import</span>
+          </a>
+          <span class="tooltip">Import</span>
+        </li>
+        <li>
+          <a href="/admin-credentials">
+            <i class="bx bx-user"></i>
+            <span class="links_name">Akun</span>
+          </a>
+          <span class="tooltip">Akun</span>
+        </li>
+
+        <li class="profile">
+          <div class="profile-details">
+            <img
+              src="/images/NAVBARBRAND.png"
+              alt="Logo"
+              style="object-fit: cover"
+            />
+            <div class="name_job">
+              <div class="name">Admin</div>
+              <div class="job">DIGI-KONSELING-PMI</div>
+            </div>
+          </div>
+          <a
+            id="log_out"
+            href="/admin-logout"
+            aria-label="Logout"
+            style="text-decoration: none"
+          >
+            <i class="bx bx-log-out"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="home-section">
+      <!-- change credentials -->
+      <div class="container mt-4 mb-3" id="credentials">
+        <div class="data_table p-3">
+        <h5 class="mb-3">Ubah Username / Password Admin</h5>
+        <div class="form-text mb-3">
+          Jika database tidak bisa diakses, fitur ini mungkin tidak berfungsi.
+        </div>
+        <form id="credentialsForm">
+          <div class="mb-3">
+            <label class="form-label" for="currentPassword">Password saat ini</label>
+            <input
+              class="form-control"
+              type="password"
+              id="currentPassword"
+              name="currentPassword"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="newUsername">Username baru</label>
+            <input
+              class="form-control"
+              type="text"
+              id="newUsername"
+              name="newUsername"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="newPassword">Password baru</label>
+            <input
+              class="form-control"
+              type="password"
+              id="newPassword"
+              name="newPassword"
+              required
+            />
+          </div>
+          <button class="btn btn-primary btn-sm" type="submit">Simpan</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- WA config -->
+    <div class="container mt-4 mb-3" id="wa-config">
+      <div class="data_table p-3">
+        <h5 class="mb-3">Atur Nomor WhatsApp & Detail Layanan</h5>
+
+        <form id="waConfigForm">
+          <div class="row g-2">
+            <div class="col-md-6">
+              <label class="form-label" for="loket1_disnakertrans"
+                >Loket 1 (Disnakertrans)</label
+              >
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="loket1_disnakertrans"
+                name="loket1_disnakertrans"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="loket2_bp2mi"
+                >Loket 2 (BP2MI)</label
+              >
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="loket2_bp2mi"
+                name="loket2_bp2mi"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="loket3_verifikasi_data"
+                >Loket 3 (Verifikasi Data)</label
+              >
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="loket3_verifikasi_data"
+                name="loket3_verifikasi_data"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="loket6_bpjs"
+                >Loket 6 (BPJS)</label
+              >
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="loket6_bpjs"
+                name="loket6_bpjs"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="loket7_imigrasi"
+                >Loket 7 (Imigrasi)</label
+              >
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="loket7_imigrasi"
+                name="loket7_imigrasi"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="konselor_1">Konselor 1</label>
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="konselor_1"
+                name="konselor_1"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="konselor_2">Konselor 2</label>
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="konselor_2"
+                name="konselor_2"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="konselor_3">Konselor 3</label>
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="konselor_3"
+                name="konselor_3"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="konselor_4">Konselor 4</label>
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="konselor_4"
+                name="konselor_4"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="konselor_5">Konselor 5</label>
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="konselor_5"
+                name="konselor_5"
+                required
+              />
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label" for="waMessage">Pesan WhatsApp</label>
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="waMessage"
+                name="waMessage"
+                required
+              />
+              <div class="form-text">
+                Disarankan pakai teks yang sama dengan template WhatsApp di
+                halaman layanan.
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-sm mt-3" type="submit">
+            Simpan
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- import excel -->
+    <div class="container mt-4 mb-3" id="import-excel">
+      <div class="data_table p-3">
+        <div class="row align-items-center">
+          <div class="col-md-7">
+            <h5 class="mb-2">Import Data Daftar Hadir (Excel)</h5>
+            <a class="btn btn-sm btn-outline-primary" href="/template-daftar-hadir.xlsx"
+              >Download template</a
+            >
+          </div>
+          <div class="col-md-5">
+            <form
+              action="/import-daftar-hadir"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <input
+                class="form-control form-control-sm"
+                type="file"
+                name="excel"
+                accept=".xlsx,.xls"
+                required
+              />
+              <button class="btn btn-sm btn-primary mt-2" type="submit">
+                Import
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- data table -->
     <div class="container mt-5 mb-5" id="data-table">
       <div class="row">
@@ -112,18 +402,116 @@
     <!--... (rest of the HTML code remains the same)... -->
     <!-- javascript -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/js/loadComponent.js"></script>
     <script src="/js/bootstrap/bootstrap.min.js"></script>
     <script src="/js/datatables.min.js"></script>
+
+    <!-- DataTables Buttons and dependencies -->
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="/js/pdfmake.min.js"></script>
     <script src="/js/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <script src="/js/loadComponent.js"></script>
+    <script src="/js/sidebar.js"></script>
 
     <script>
       $(document).ready(function () {
+        const waKeys = [
+          "loket1_disnakertrans",
+          "loket2_bp2mi",
+          "loket3_verifikasi_data",
+          "loket6_bpjs",
+          "loket7_imigrasi",
+          "konselor_1",
+          "konselor_2",
+          "konselor_3",
+          "konselor_4",
+          "konselor_5",
+          "waMessage",
+        ];
+
+        async function loadWaConfig() {
+          try {
+            const resp = await fetch("/wa-config");
+            const cfg = await resp.json();
+            waKeys.forEach((k) => {
+              const el = document.getElementById(k);
+              if (el && cfg && cfg[k] !== undefined) {
+                el.value = cfg[k];
+              }
+            });
+          } catch (e) {
+            // Jika gagal, biarkan nilai input default di browser.
+          }
+        }
+
+        loadWaConfig();
+
+        $("#waConfigForm").on("submit", async function (e) {
+          e.preventDefault();
+          const body = {};
+          waKeys.forEach((k) => {
+            body[k] = $("#" + k).val();
+          });
+
+          try {
+            const resp = await fetch("/admin/wa-config", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(body),
+              credentials: "same-origin",
+            });
+
+            if (resp.ok) {
+              alert("Konfigurasi WhatsApp berhasil disimpan.");
+              return;
+            }
+            const text = await resp.text();
+            alert(text || "Gagal menyimpan konfigurasi WhatsApp.");
+          } catch (err) {
+            console.error(err);
+            alert("Gagal menghubungi server.");
+          }
+        });
+
+        $("#credentialsForm").on("submit", async function (e) {
+          e.preventDefault();
+
+          const currentPassword = $("#currentPassword").val();
+          const newUsername = $("#newUsername").val();
+          const newPassword = $("#newPassword").val();
+
+          try {
+            const resp = await fetch("/admin-update-credentials", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                currentPassword,
+                newUsername,
+                newPassword,
+              }),
+            });
+
+            if (resp.ok) {
+              alert("Username/password admin berhasil diubah.");
+              window.location.href = "/admin";
+              return;
+            }
+
+            const text = await resp.text();
+            alert(text || "Gagal menyimpan username/password.");
+          } catch (err) {
+            console.error(err);
+            alert("Gagal menghubungi server.");
+          }
+        });
+
         $.ajax({
           type: "GET",
           url: "/get-data",
@@ -180,10 +568,15 @@
             });
           },
           error: function (xhr, status, error) {
+            if (xhr && xhr.status === 401) {
+              window.location.href = "/login";
+              return;
+            }
             console.error(error);
           },
         });
       });
     </script>
+    </section>
   </body>
 </html>

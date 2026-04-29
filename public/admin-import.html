@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin - Import Excel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+
+    <!-- Boxicons CDN Link -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .data_table {
+        background: #fff;
+        padding: 15px;
+        box-shadow: 1px 3px 5px #aaa;
+        border-radius: 5px;
+      }
+      /* Loading Overlay */
+      #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        z-index: 9999;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+      <div class="spinner-border text-primary mb-3" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <h5 class="text-primary">Sedang memproses data Excel...</h5>
+      <p class="text-muted">Mohon tunggu sejenak, jangan menutup halaman ini.</p>
+    </div>
+
+    <nav class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxs-copyright icon"></i>
+        <div class="logo_name">DIGI-CONSELING-PMI</div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+
+      <ul class="nav-list">
+        <li>
+          <a href="/admin-data">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Data</span>
+          </a>
+          <span class="tooltip">Data</span>
+        </li>
+        <li>
+          <a href="/admin-layanan">
+            <i class="bx bx-chat"></i>
+            <span class="links_name">Edit Detail Layanan</span>
+          </a>
+          <span class="tooltip">Edit Detail Layanan</span>
+        </li>
+        <li>
+          <a href="/admin-import">
+            <i class="bx bx-upload"></i>
+            <span class="links_name">Import</span>
+          </a>
+          <span class="tooltip">Import</span>
+        </li>
+        <li>
+          <a href="/admin-gallery">
+            <i class="bx bx-image"></i>
+            <span class="links_name">Manajemen Foto</span>
+          </a>
+          <span class="tooltip">Manajemen Foto</span>
+        </li>
+        <li>
+          <a href="/admin-credentials">
+            <i class="bx bx-user"></i>
+            <span class="links_name">Akun</span>
+          </a>
+          <span class="tooltip">Akun</span>
+        </li>
+
+        <li class="profile">
+          <div class="profile-details">
+            <img
+              src="/images/NAVBARBRAND.png"
+              alt="profile"
+              style="object-fit: cover"
+            />
+            <div class="name_job">
+              <div class="name">Admin</div>
+              <div class="job">DIGI-KONSELING-PMI</div>
+            </div>
+          </div>
+          <a
+            id="log_out"
+            href="/admin-logout"
+            aria-label="Logout"
+            style="text-decoration: none"
+          >
+            <i class="bx bx-log-out"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="home-section">
+      <div class="container mt-4 mb-5">
+        <div class="data_table">
+          <h5 class="mb-3">Import Data Daftar Hadir (Excel)</h5>
+
+          <div class="alert alert-info mb-4">
+            <h6><i class="bx bx-info-circle"></i> Petunjuk Pengisian Excel:</h6>
+            <ul class="mb-0 small">
+              <li><strong>Kolom Wajib:</strong> <code>nama</code>, <code>nomer_hp</code>, <code>alamat</code>, <code>jenis_keperluan</code>, <code>tanggal</code></li>
+              <li><strong>Jenis Keperluan:</strong> Harus diisi sesuai pilihan sistem (kapitalisasi harus sama):
+                <div class="mt-1">
+                  <span class="badge bg-secondary">Layanan Informasi</span>
+                  <span class="badge bg-secondary">Pengaduan</span>
+                  <span class="badge bg-secondary">Konsultasi</span>
+                  <span class="badge bg-secondary">Lainnya</span>
+                </div>
+              </li>
+              <li><strong>Format Tanggal:</strong> Gunakan format <code>DD/MM/YYYY</code> (Contoh: 29/04/2026).</li>
+              <li><strong>No HP:</strong> Masukkan nomor aktif (Contoh: 08123456789).</li>
+            </ul>
+          </div>
+
+          <div class="mb-3">
+            <a
+              class="btn btn-sm btn-primary"
+              href="/template-daftar-hadir.xlsx"
+            >
+              <i class="bx bx-download"></i> Download Template Excel
+            </a>
+          </div>
+
+          <form
+            action="/import-daftar-hadir"
+            method="post"
+            enctype="multipart/form-data"
+            class="border-top pt-4"
+          >
+            <div class="mb-3">
+              <label class="form-label fw-bold" for="excel">Pilih file Excel yang sudah diisi</label>
+              <input
+                class="form-control"
+                type="file"
+                name="excel"
+                id="excel"
+                accept=".xlsx,.xls"
+                required
+              />
+            </div>
+
+            <button class="btn btn-success" type="submit">
+              <i class="bx bx-upload"></i> Mulai Import Data
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="/js/sidebar.js"></script>
+    <script>
+      const importForm = document.querySelector('form[action="/import-daftar-hadir"]');
+      const overlay = document.getElementById('loading-overlay');
+      const submitBtn = importForm.querySelector('button[type="submit"]');
+
+      if (importForm) {
+        importForm.addEventListener('submit', function() {
+          // Tampilkan overlay loading
+          overlay.style.display = 'flex';
+          
+          // Ubah tombol jadi loading state
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Memproses...';
+        });
+      }
+    </script>
+  </body>
+</html>
+

@@ -2,23 +2,49 @@ let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
 let searchBtn = document.querySelector(".bx-search");
 
-closeBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("open");
-  menuBtnChange(); //calling the function(optional)
-});
-
-searchBtn.addEventListener("click", () => {
-  // Sidebar open when you click on the search iocn
-  sidebar.classList.toggle("open");
-  menuBtnChange(); //calling the function(optional)
-});
-
-// following are the code to change sidebar button(optional)
-function menuBtnChange() {
-  if (sidebar.classList.contains("open")) {
-    closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the iocns class
+// Restore sidebar state from localStorage on page load
+if (sidebar) {
+  const sidebarState = localStorage.getItem("sidebarState");
+  if (sidebarState === "open") {
+    sidebar.classList.add("open");
   } else {
-    closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
+    sidebar.classList.remove("open");
+  }
+  menuBtnChange();
+}
+
+if (closeBtn && sidebar) {
+  closeBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    // Save current state to localStorage
+    if (sidebar.classList.contains("open")) {
+      localStorage.setItem("sidebarState", "open");
+    } else {
+      localStorage.setItem("sidebarState", "closed");
+    }
+    menuBtnChange();
+  });
+}
+
+if (searchBtn && sidebar) {
+  searchBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    if (sidebar.classList.contains("open")) {
+      localStorage.setItem("sidebarState", "open");
+    } else {
+      localStorage.setItem("sidebarState", "closed");
+    }
+    menuBtnChange();
+  });
+}
+
+function menuBtnChange() {
+  if (sidebar && closeBtn) {
+    if (sidebar.classList.contains("open")) {
+      closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+    } else {
+      closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
   }
 }
 

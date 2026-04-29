@@ -1,0 +1,8 @@
+{
+  "ignore": [
+    "wa-config.json",
+    "public/images/*",
+    "node_modules"
+  ],
+  "ext": "js,json,html,css"
+}

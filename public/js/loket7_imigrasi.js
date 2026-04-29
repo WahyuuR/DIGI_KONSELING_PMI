@@ -10,6 +10,25 @@ const questionsAndAnswers = {
 const questionsContainer = document.getElementById("questions");
 const answersContainer = document.getElementById("answers");
 
+// WhatsApp number is controlled by admin (file-based) via /wa-config.
+const WA_KEY = "loket7_imigrasi";
+const WA_DEFAULT_PHONE = "+6282228888134";
+let waPhone = WA_DEFAULT_PHONE;
+let waMessage = "Halo, saya membutuhkan informasi lebih lanjut.";
+
+fetch("/wa-config")
+  .then((r) => r.json())
+  .then((cfg) => {
+    if (cfg && cfg[WA_KEY]) waPhone = cfg[WA_KEY];
+    if (cfg && cfg.waMessage) waMessage = cfg.waMessage;
+  })
+  .catch(() => {});
+
+function buildWaHref(phone) {
+  const msg = encodeURIComponent(waMessage || "Halo, saya membutuhkan informasi lebih lanjut.");
+  return `https://wa.me/${String(phone || "").trim()}?text=${msg}`;
+}
+
 Object.keys(questionsAndAnswers).forEach((question) => {
   const questionDiv = document.createElement("div");
   questionDiv.className = "chat-entry";
@@ -35,8 +54,7 @@ function displayAnswer(question) {
 
   // Membuat tombol WhatsApp
   const whatsappButton = document.createElement("a");
-  whatsappButton.href =
-    "https://wa.me/+62  82228888134?text=Halo, saya membutuhkan informasi lebih lanjut.";
+  whatsappButton.href = buildWaHref(waPhone);
   whatsappButton.className = "whatsapp-button";
   whatsappButton.target = "_blank";
   whatsappButton.textContent = "Hubungi via WhatsApp";

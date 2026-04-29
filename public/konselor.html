@@ -3,192 +3,137 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Konselor</title>
+    <title>Konsultasi Kerja dan Pengaduan</title>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <style>
-      .card {
-        width: 20rem;
-        overflow: hidden;
-        margin-bottom: 20px;
+      .box-konselor {
+        margin-top: 20px;
+        margin-bottom: 50px;
       }
-      #nav {
-        position: -webkit-sticky; /* Untuk browser WebKit seperti Chrome dan Safari*/
-        position: sticky;
-        top: 0;
-        z-index: 1000;
+      .branding-header {
+        padding: 15px 0;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 30px;
       }
-      .navbar-toggler {
-        border: none;
-        font-size: 1.25rem;
+      .card-img-top {
+        height: 500px; /* Diperpanjang agar tidak terpotong */
+        object-fit: cover;
+        object-position: top; /* Fokus pada wajah di bagian atas */
       }
-      .navbar-toggler:focus,
-      .btn-close:focus {
-        box-shadow: none;
-        outline: none;
+      .section-title {
+        position: relative;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+        font-weight: 700;
+        color: #333;
       }
-      .card img {
-        height: 400px;
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: #0d6efd;
+        border-radius: 3px;
       }
-      .row {
-        flex-wrap: wrap;
-      }
-      @media (max-width: 968px) {
-        .card {
-          width: 14rem; /* Make the card full-width on tablet screens*/
-          margin-bottom: 20px; /* Keep the margin between cards*/
-          overflow: hidden;
-          flex: 1 1 calc(50% - 5px); /* Set the card width to 45% of the container*/
-        }
-        .card img {
-          height: 200px;
-        }
-      }
-      @media (min-width: 2000px) {
-        .card {
-          width: 14rem; /* Make the card full-width on tablet screens*/
-          margin-bottom: 20px; /* Keep the margin between cards*/
-          overflow: hidden;
-          flex: 1 1 calc(50% - 5px); /* Set the card width to 45% of the container*/
-        }
-        .card img {
-          height: 200px;
-        }
-      }
-      @media (max-width: 716px) and (max-height: 897px) {
-        .card {
-          width: 100%; /* Make the card full-width on tablet screens*/
-          margin-bottom: 20px; /* Keep the margin between cards*/
-          overflow: hidden;
-        }
-        .col-md-4 {
-          flex: 0 0 50%; /* Make each column take up 50% of the width on tablet screens*/
-          max-width: 50%; /* Set a max-width to prevent columns from getting too wide*/
+      @media (max-width: 768px) {
+        .card-img-top {
+          height: 350px;
         }
       }
     </style>
   </head>
   <body>
-    <nav id="nav"></nav>
 
-    <div class="container mt-3">
-      <div class="row">
-        <h2>Konsultasi Kerja dan Pengaduan</h2>
-        <div class="col-md-4">
-          <div class="card rounded-4">
-            <img
-              src="/images/profil_DEFRINA.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h7 class="card-title">Defrina Sukma Satiti, S.IP</h7>
-              <p class="card-text">
-                Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang
-                tersedia pada saat jam kerja
-              </p>
-              <a
-                href="https://wa.me/+6285732747920?text=Halo, saya membutuhkan informasi lebih lanjut."
-                class="btn btn-success"
-                target="_blank"
-                >Hubungi via WhatsApp</a
-              >
-            </div>
-          </div>
-        </div>
+    <div class="container box-konselor">
+      <!-- Tombol Kembali -->
+      <div class="mb-4">
+        <a href="/layanan.html" class="btn btn-light shadow-sm rounded-pill px-4">
+          <i class="bx bx-left-arrow-alt"></i> Kembali ke Layanan
+        </a>
+      </div>
 
-        <div class="col-md-4">
-          <div class="card rounded-4">
-            <img src="/images/profil_Siti.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Siti Halimatus Sa'diyah, S.E</h5>
-              <p class="card-text">
-                Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang
-                tersedia pada saat jam kerja
-              </p>
-              <a
-                href="https://wa.me/+6285335909931?text=Halo, saya membutuhkan informasi lebih lanjut."
-                class="btn btn-success"
-                target="_blank"
-                >Hubungi via WhatsApp</a
-              >
-            </div>
-          </div>
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Pusat Konsultasi & Pengaduan</h2>
+        <div id="konselorDetail" class="alert alert-info border-0 shadow-sm rounded-4 mt-3" style="background: #e3f2fd;">
+          Sedang memuat informasi...
         </div>
+      </div>
 
-        <div class="col-md-4">
-          <div class="card rounded-4">
-            <img
-              src="/images/profil_suprayitna.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Suprayitna, S.H</h5>
-              <p class="card-text">
-                Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang
-                tersedia pada saat jam kerja
-              </p>
-              <a
-                href="https://wa.me/+6281515466778?text=Halo, saya membutuhkan informasi lebih lanjut."
-                class="btn btn-success"
-                target="_blank"
-                >Hubungi via WhatsApp</a
-              >
-            </div>
-          </div>
+      <!-- Baris 1: Konsultasi Kerja dan Pengaduan (3 Orang) -->
+      <div class="mb-5">
+        <h4 class="text-center section-title">Konsultasi Kerja dan Pengaduan</h4>
+        <div class="row justify-content-center" id="row1">
+          <!-- Dinamis via JS -->
         </div>
-        <hr />
-        <h2>Konsultasi Kerja</h2>
-        <div class="col-md-4">
-          <div class="card rounded-4">
-            <img src="/images/profil_dina.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Dina Yuwanita, S.Psi</h5>
-              <p class="card-text">
-                Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang
-                tersedia pada saat jam kerja
-              </p>
-              <a
-                href="https://wa.me/+6285648323939?text=Halo, saya membutuhkan informasi lebih lanjut."
-                class="btn btn-success"
-                target="_blank"
-                >Hubungi via WhatsApp</a
-              >
-            </div>
-          </div>
-        </div>
+      </div>
 
-        <div class="col-md-4">
-          <div class="card rounded-4">
-            <img
-              src="/images/profil_Ferdianto.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ferdianto Wido Utomo, S.M</h5>
-              <p class="card-text">
-                Silahkan Konsultasi Kerja dan Pengaduan dengan Konselor yang
-                tersedia pada saat jam kerja
-              </p>
-              <a
-                href="https://wa.me/+6281232926465?text=Halo, saya membutuhkan informasi lebih lanjut."
-                class="btn btn-success"
-                target="_blank"
-                >Hubungi via WhatsApp</a
-              >
-            </div>
-          </div>
+      <!-- Baris 2: Konsultasi Pengaduan (2 Orang) -->
+      <div>
+        <h4 class="text-center section-title">Konsultasi Pengaduan</h4>
+        <div class="row justify-content-center" id="row2">
+          <!-- Dinamis via JS -->
         </div>
       </div>
     </div>
 
-    <footer id="footer"></footer>
+    <script>
+      (async function () {
+        try {
+          const cfg = await fetch("/wa-config").then((r) => r.json());
+          
+          if (cfg.detail_konselor) {
+            document.getElementById('konselorDetail').innerHTML = cfg.detail_konselor.replace(/\n/g, '<br>');
+          }
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+          const row1 = document.getElementById('row1');
+          const row2 = document.getElementById('row2');
+          
+          row1.innerHTML = '';
+          row2.innerHTML = '';
+
+          for (let i = 1; i <= 5; i++) {
+            const name = cfg[`konselor_${i}_name`] || `Konselor ${i}`;
+            const wa = cfg[`konselor_${i}_wa`] || "";
+            const img = cfg[`konselor_${i}_img`] || "/images/Digikons.png";
+            const serviceType = i <= 3 ? "Konsultasi Kerja & Pengaduan" : "Konsultasi Pengaduan";
+            
+            if (!wa) continue;
+
+            const col = document.createElement('div');
+            col.className = 'col-lg-4 col-md-6 mb-4';
+            col.innerHTML = `
+              <div class="card rounded-4 shadow-sm border-0 h-100">
+                <img src="${img}" class="card-img-top rounded-top-4" alt="${name}" onerror="this.src='/images/Digikons.png'">
+                <div class="card-body text-center d-flex flex-column">
+                  <h5 class="card-title fw-bold mt-2 mb-1">${name}</h5>
+                  <p class="text-primary small fw-bold mb-2">${serviceType}</p>
+                  <p class="text-muted small mb-3">Silahkan hubungi kami pada jam kerja untuk bantuan profesional.</p>
+                  <div class="mt-auto">
+                    <a href="https://wa.me/${wa.replace(/\D/g, "")}" target="_blank" class="btn btn-primary rounded-pill px-4 w-100 shadow-sm">
+                      <i class="bx bxl-whatsapp"></i> Hubungi Sekarang
+                    </a>
+                  </div>
+                </div>
+              </div>
+            `;
+
+            if (i <= 3) {
+              row1.appendChild(col);
+            } else {
+              col.className = 'col-lg-4 col-md-6 mb-4'; // Tetap col-4 agar ukuran sama
+              row2.appendChild(col);
+            }
+          }
+        } catch (err) {
+          console.error("Gagal memuat data konselor:", err);
+          document.getElementById('konselorDetail').innerHTML = "Gagal memuat data layanan.";
+        }
+      })();
+    </script>
     <script src="/js/bootstrap/bootstrap.min.js"></script>
-    <script src="/js/loadComponent.js"></script>
   </body>
 </html>
