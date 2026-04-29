@@ -143,52 +143,96 @@ router.get("/admin-logout", requireAdminAuth, (req, res) => {
   return res.redirect("/login");
 });
 
-// --- Image Management (New) ---
-const imageStorage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const dir = path.join(__dirname, "..", "public", "images");
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    cb(null, dir);
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
-    cb(null, "upload-" + uniqueSuffix + ext);
-  },
+// --- Image Management (Database-backed for Vercel) ---
+const uploadImg = multer({ 
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 2 * 1024 * 1024 } // 2MB limit
 });
-const uploadImg = multer({ storage: imageStorage });
 
-router.get("/admin/list-images", requireAdminAuth, (req, res) => {
-  const dir = path.join(__dirname, "..", "public", "images");
-  if (!fs.existsSync(dir)) return res.json([]);
-  fs.readdir(dir, (err, files) => {
-    if (err) return res.status(500).json({ error: "Failed to read images" });
-    const imageFiles = files.filter((f) =>
-      [".jpg", ".jpeg", ".png", ".gif", ".webp"].includes(path.extname(f).toLowerCase())
+async function ensureGalleryTable() {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS gallery (
+        id SERIAL PRIMARY KEY,
+        filename TEXT NOT NULL UNIQUE,
+        mime_type TEXT NOT NULL,
+        data BYTEA NOT NULL,
+        updated_at TIMESTAMPTZ DEFAULT NOW()
+      );
+    `);
+  } catch (err) {
+    console.error("Gallery table error:", err);
+  }
+}
+
+// Route to serve images from DB
+router.get("/images/:filename", async (req, res) => {
+  try {
+    const { filename } = req.params;
+    const { rows } = await pool.query(
+      "SELECT data, mime_type FROM gallery WHERE filename = $1",
+      [filename]
     );
-    res.json(imageFiles);
-  });
+    
+    if (rows.length === 0) {
+      // Fallback: If not in DB, try serving from static (for default images like NAVBARBRAND.png)
+      return res.sendFile(path.join(__dirname, "..", "public", "images", filename), (err) => {
+        if (err) res.status(404).send("Not found");
+      });
+    }
+
+    res.setHeader("Content-Type", rows[0].mime_type);
+    res.setHeader("Cache-Control", "public, max-age=31536000"); // Cache for 1 year
+    return res.send(rows[0].data);
+  } catch (err) {
+    return res.status(404).send("Not found");
+  }
 });
 
-router.post("/admin/upload-image", requireAdminAuth, uploadImg.single("image"), (req, res) => {
-  if (!req.file) return res.status(400).json({ error: "No file uploaded" });
-  res.json({ filename: req.file.filename, path: "/images/" + req.file.filename });
+router.get("/admin/list-images", requireAdminAuth, async (req, res) => {
+  try {
+    await ensureGalleryTable();
+    const { rows } = await pool.query("SELECT filename FROM gallery ORDER BY updated_at DESC");
+    res.json(rows.map(r => r.filename));
+  } catch (err) {
+    res.status(500).json({ error: "Failed to list images" });
+  }
 });
 
-router.post("/admin/delete-image", requireAdminAuth, (req, res) => {
-  const { filename } = req.body;
-  if (!filename) return res.status(400).json({ error: "Filename required" });
-  
-  // Security: Prevent directory traversal
-  const safeFilename = path.basename(filename);
-  const filePath = path.join(__dirname, "..", "public", "images", safeFilename);
-  
-  if (!fs.existsSync(filePath)) return res.status(404).json({ error: "File not found" });
-  
-  fs.unlink(filePath, (err) => {
-    if (err) return res.status(500).json({ error: "Failed to delete file" });
+router.post("/admin/upload-image", requireAdminAuth, uploadImg.single("image"), async (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+    
+    await ensureGalleryTable();
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const ext = path.extname(req.file.originalname) || ".jpg";
+    const filename = "upload-" + uniqueSuffix + ext;
+
+    await pool.query(
+      "INSERT INTO gallery (filename, mime_type, data) VALUES ($1, $2, $3)",
+      [filename, req.file.mimetype, req.file.buffer]
+    );
+
+    res.json({ filename, path: "/images/" + filename });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to upload to DB" });
+  }
+});
+
+router.post("/admin/delete-image", requireAdminAuth, async (req, res) => {
+  try {
+    const { filename } = req.body;
+    if (!filename) return res.status(400).json({ error: "Filename required" });
+    
+    const safeFilename = path.basename(filename);
+    const result = await pool.query("DELETE FROM gallery WHERE filename = $1", [safeFilename]);
+    
+    if (result.rowCount === 0) return res.status(404).json({ error: "File not found in DB" });
     res.json({ ok: true });
-  });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to delete image from DB" });
+  }
 });
 
 router.post("/admin-login", async (req, res) => {
