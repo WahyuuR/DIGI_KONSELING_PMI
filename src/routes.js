@@ -192,8 +192,25 @@ router.get("/images/:filename", async (req, res) => {
 router.get("/admin/list-images", requireAdminAuth, async (req, res) => {
   try {
     await ensureGalleryTable();
+    // 1. Get from DB
     const { rows } = await pool.query("SELECT filename FROM gallery ORDER BY updated_at DESC");
-    res.json(rows.map(r => r.filename));
+    const dbFiles = rows.map(r => r.filename);
+
+    // 2. Get from Physical Folder (Fallback for legacy files)
+    let physicalFiles = [];
+    const dir = path.join(__dirname, "..", "public", "images");
+    if (fs.existsSync(dir)) {
+      try {
+        const files = fs.readdirSync(dir);
+        physicalFiles = files.filter(f => 
+          [".jpg", ".jpeg", ".png", ".gif", ".webp"].includes(path.extname(f).toLowerCase())
+        );
+      } catch (e) { /* ignore readdir error */ }
+    }
+
+    // 3. Merge and unique
+    const allFiles = [...new Set([...dbFiles, ...physicalFiles])];
+    res.json(allFiles);
   } catch (err) {
     res.status(500).json({ error: "Failed to list images" });
   }
