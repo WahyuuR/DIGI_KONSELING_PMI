@@ -175,10 +175,12 @@ router.get("/images/:filename", async (req, res) => {
     );
     
     if (rows.length === 0) {
-      // Fallback: If not in DB, try serving from static (for default images like NAVBARBRAND.png)
-      return res.sendFile(path.join(__dirname, "..", "public", "images", filename), (err) => {
-        if (err) res.status(404).send("Not found");
-      });
+      // Fallback: If not in DB, try serving from physical folder
+      const physicalPath = path.join(process.cwd(), "public", "images", filename);
+      if (fs.existsSync(physicalPath)) {
+        return res.sendFile(physicalPath);
+      }
+      return res.status(404).send("Not found");
     }
 
     res.setHeader("Content-Type", rows[0].mime_type);
